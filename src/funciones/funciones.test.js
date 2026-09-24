@@ -69,7 +69,7 @@ describe("formatearPrecio", () => {
 
 
     test("usa dos separadores de miles en montos de siete cifras", () => {
-        expect(formatearPrecio (100000)).toBe("$ 100.000")
+        expect(formatearPrecio (1000000)).toBe("$ 1.000.000")
     });}
 )
 
@@ -119,7 +119,6 @@ describe("contarPalabras", () => {
     });
 
     test("cuenta bien si hay saltos de linea",() => {
-        expect(contarPalabras(`Elio
-            villarroel`)).toBe(2)
+        expect(contarPalabras("Elio\nVillarroel")).toBe(2)
     });
 });
