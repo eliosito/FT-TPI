@@ -150,15 +150,55 @@ describe("validarPassword - acumulación de errores", () => {
 });
 
 describe("validarPassword - entradas inesperadas", () => {
-  test.todo("rechaza una cadena vacía sin lanzar excepción");
-  test.todo("rechaza null sin lanzar excepción");
-  test.todo("rechaza undefined sin lanzar excepción");
-  test.todo("rechaza un número sin lanzar excepción");
+  test("rechaza una cadena vacía sin lanzar excepción", () => {
+    const contraseña = ""
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(false);
+
+  })
+
+  test("rechaza null sin lanzar excepción", () => {
+    const contraseña = null
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(false);
+  });
+
+  test("rechaza undefined sin lanzar excepción", () => {
+    const contraseña = undefined
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(false);
+  });
+
+  test("rechaza un número sin lanzar excepción",() => {
+    const contraseña = 1
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(false);
+  });
 });
 
 describe("validarPassword - caracteres del español", () => {
-  test.todo("acepta una contraseña con ñ");
-  test.todo("acepta una contraseña con acentos");
+  test("acepta una contraseña con ñ", () => {
+    const contraseña = "C0ntraseñavalida"
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(true);
+  });
+  test("acepta una contraseña con acentos", () => {
+    const contraseña = "C0ntrasénavalida"
+
+    const resultado = validarPassword(contraseña);
+
+    expect(resultado.valida).toBe(true);
+  });
 });
 
 /*
