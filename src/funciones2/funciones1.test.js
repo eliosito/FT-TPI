@@ -2,13 +2,13 @@ import { describe, test, expect } from "vitest";
 import { esPar, formatearPrecio, iniciales, contarPalabras } from "./funciones.js";
 
 /* ═══════════════════════════════════════════════════════════════════
-EJERCICIO 0 - Primeros tests unitarios
+   EJERCICIO 0 - Primeros tests unitarios
 
-El primer bloque esta RESUELTO como ejemplo.
-Completa los tres que faltan siguiendo el mismo patron AAA.
+   El primer bloque esta RESUELTO como ejemplo.
+   Completa los tres que faltan siguiendo el mismo patron AAA.
 
-Corre `npm run test:watch` y trabaja con el resultado a la vista.
-═══════════════════════════════════════════════════════════════════ */
+   Corre `npm run test:watch` y trabaja con el resultado a la vista.
+   ═══════════════════════════════════════════════════════════════════ */
 
 // ─────────────────────────────────────────────────────────────────────
 // RESUELTO - usalo de modelo
@@ -26,7 +26,6 @@ describe("esPar", () => {
     });
 
     test("devuelve false cuando el numero es impar", () => {
-        
         expect(esPar(7)).toBe(false);
     });
 
@@ -56,44 +55,80 @@ describe("formatearPrecio", () => {
     });
 
     test("formatea un monto con decimales", () => {
-        expect(formatearPrecio(1500.5)).toBe("$ 1.500,50")
+        const pesos = 1500.75;
+
+        const resultado = formatearPrecio(pesos);
+
+        // Assert
+        console.log(resultado);
+        expect(resultado).toBe("$ 1.500,75");
     });
 
     test("formatea el cero", () => {
-        expect(formatearPrecio(0)).toBe("$ 0")
+        const pesos = 0;
+
+        const resultado = formatearPrecio(pesos);
+
+        expect(resultado).toBe("$ 0");
     });
 
     test("formatea un monto negativo", () => {
-        expect(formatearPrecio (-500)).toBe("-$ 500")
+        const pesos = -1500;
+
+        const resultado = formatearPrecio(pesos);
+
+        expect(resultado).toBe("-$ 1.500");
     });
 
-
     test("usa dos separadores de miles en montos de siete cifras", () => {
-        expect(formatearPrecio (1000000)).toBe("$ 1.000.000")
-    });}
-)
+        const pesos = 1234567;
+
+        const resultado = formatearPrecio(pesos);
+
+        expect(resultado).toBe("$ 1.234.567");
+    });
+});
 
 // ─────────────────────────────────────────────────────────────────────
 // EJERCICIO 2
 // Pensa: que pasa con un nombre de una sola palabra? Y con espacios de mas?
 // Y con un string vacio?
 // ─────────────────────────────────────────────────────────────────────
+
 describe("iniciales", () => {
-    test("devuelve las iniciales de un nombre y dos apellidos", () => {
-        expect(iniciales("Esteban Villarroel Sandoval")).toBe("E.V.S.")
-    });
 
-    test("funciona con un nombre de una sola palabra",() => {
-        expect(iniciales("Elio")).toBe("E.")
-    });
+  test("devuelve las iniciales de un nombre y dos apellidos", () => {
+    const nombreCompleto = "Juan Perez Gonzalez";
 
-    test("ignora los espacios de mas",() => {
-        expect(iniciales("    Nicolas   Salguero    ")).toBe("N.S.")
-    });
+    const resultado = iniciales(nombreCompleto);
 
-    test("devuelve una cadena vacia si el nombre esta vacio",() => {
-        expect(iniciales("")).toBe("")
-    });
+    expect(resultado).toBe("J.P.G.");
+  });
+
+  test("funciona con un nombre de una sola palabra", () => {
+    const nombreCompleto = "Juan";
+
+    const resultado = iniciales(nombreCompleto);
+
+    expect(resultado).toBe("J.");
+  });
+
+  test("ignora los espacios de mas", () => {
+    const nombreCompleto = "  Juan   Perez   Gonzalez  ";
+
+    const resultado = iniciales(nombreCompleto);
+
+    expect(resultado).toBe("J.P.G.");
+  });
+
+  test("devuelve una cadena vacia si el nombre esta vacio", () => {
+    const nombreCompleto = "";
+
+    const resultado = iniciales(nombreCompleto);
+
+    expect(resultado).toBe("");
+  });
+
 });
 
 // ─────────────────────────────────────────────────────────────────────
@@ -101,24 +136,47 @@ describe("iniciales", () => {
 // Pensa en los casos extremos de un texto: vacio, solo espacios, una palabra,
 // varias palabras separadas por muchos espacios, saltos de linea.
 // ─────────────────────────────────────────────────────────────────────
+
 describe("contarPalabras", () => {
-    test("cuenta las palabras de una frase",() => {
-        expect(contarPalabras("Profe Estoy Haciendo Bien la tarea")).toBe(6)
-    });
 
-    test("devuelve 0 con un texto vacio",() => {
-        expect(contarPalabras("")).toBe(0)
-    });
+  test("cuenta las palabras de una frase", () => {
+    const texto = "Hola mundo desde JavaScript";
 
-    test("devuelve 0 con un texto de solo espacios",() => {
-        expect(contarPalabras("  ")).toBe(0)
-    });
+    const resultado = contarPalabras(texto);
 
-    test("no cuenta de mas si hay varios espacios seguidos",() => {
-        expect(contarPalabras("Pongame     10 profe ")).toBe(3)
-    });
+    expect(resultado).toBe(4);
+  });
 
-    test("cuenta bien si hay saltos de linea",() => {
-        expect(contarPalabras("Elio\nVillarroel")).toBe(2)
-    });
+  test("devuelve 0 con un texto vacio", () => {
+    const texto = "";
+
+    const resultado = contarPalabras(texto);
+
+    expect(resultado).toBe(0);
+  });
+
+  test("devuelve 0 con un texto de solo espacios", () => {
+    const texto = "     ";
+
+    const resultado = contarPalabras(texto);
+
+    expect(resultado).toBe(0);
+  });
+
+  test("no cuenta de mas si hay varios espacios seguidos", () => {
+    const texto = "Hola    mundo   JavaScript";
+
+    const resultado = contarPalabras(texto);
+
+    expect(resultado).toBe(3);
+  });
+
+  test("cuenta bien si hay saltos de linea", () => {
+    const texto = "Hola\nmundo\ndesde\nJavaScript";
+
+    const resultado = contarPalabras(texto);
+
+    expect(resultado).toBe(4);
+  });
+
 });
