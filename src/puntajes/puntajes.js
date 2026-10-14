@@ -1,4 +1,4 @@
-/**
+                                                                                                                                                       /**
  * Práctica - El ranking de un videojuego
  *
  * Seis funciones del sistema de puntajes de un juego.
@@ -32,7 +32,7 @@ export function calcularPuntaje(aciertos, errores) {
  * @param {number} puntaje
  * @returns {string}
  */
-export function medalla(puntaje) {
+export function Medalla(puntaje) {
   if (puntaje >= 1000) return "oro";
   if (puntaje >= 500) return "plata";
   if (puntaje >= 100) return "bronce";

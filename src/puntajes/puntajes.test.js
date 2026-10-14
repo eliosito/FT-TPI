@@ -1,7 +1,7 @@
 import { describe, test, expect } from "vitest";
 import {
   calcularPuntaje,
-  medalla,
+  Medalla,
   bonusPorTiempo,
   podio,
   formatearTiempo,
@@ -43,10 +43,41 @@ describe("calcularPuntaje", () => {
     expect(resultado).toBe(30);
   });
 
-  test.todo("resta 5 puntos por cada error");
-  test.todo("devuelve 0 cuando no hay aciertos ni errores");
-  test.todo("devuelve 0 cuando los errores restan justo lo mismo que suman los aciertos");
-  test.todo("devuelve 0, y no un número negativo, cuando los errores restan más de lo que suman los aciertos");
+  test("resta 5 puntos por cada error",() => {
+    const aciertos = 1;
+    const errores = 5;
+
+    const resultado = calcularPuntaje(aciertos, errores)
+
+    expect(resultado).toBe(0)
+  });
+  test("devuelve 0 cuando no hay aciertos ni errores", () => {
+    const aciertos = 0;
+    const errores = 0;
+
+    const resultado = calcularPuntaje(aciertos, errores)
+
+    expect(resultado).toBe(0)
+
+  });
+  test("devuelve 0 cuando los errores restan justo lo mismo que suman los aciertos", () => {
+    const aciertos = 1;
+    const errores = 2;
+
+    const resultado = calcularPuntaje(aciertos, errores)
+
+    expect(resultado).toBe(0)
+  });
+
+  test("develve 0, y no un número negativo, cuando los errores restan más de lo que suman los aciertos",() => {
+        const aciertos = 1;
+        const errores = 5;
+
+        const resultado = calcularPuntaje(aciertos, errores)
+
+        expect(resultado).toBe(0)
+  }
+  );
 });
 
 // ─────────────────────────────────────────────────────────────────────
@@ -57,10 +88,18 @@ describe("calcularPuntaje", () => {
 // ─────────────────────────────────────────────────────────────────────
 describe("medalla", () => {
   test("devuelve 'bronce' con un puntaje de 250", () => {
-    expect(medalla(250)).toBe("bronce");
+    expect(Medalla(250)).toBe("bronce");
   });
 
-  test.todo("devuelve 'sin medalla' con un puntaje de 50");
+  test("devuelve 'sin medalla' con un puntaje de 50",() => {
+    const puntaje = calcularPuntaje(5,0)
+
+    const medalla = Medalla(puntaje);
+
+    expect(medalla).toBe("sin medalla")
+
+
+  });
   test.todo("devuelve 'plata' con un puntaje de 700");
   test.todo("devuelve 'oro' con un puntaje de 3000");
 
