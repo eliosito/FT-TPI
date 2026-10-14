@@ -10,19 +10,19 @@ import {
 } from "./puntajes.js";
 
 /* ═══════════════════════════════════════════════════════════════════
-   PRÁCTICA - El ranking de un videojuego
+    PRÁCTICA - El ranking de un videojuego
 
-   Son seis ejercicios y un desafío, de más a menos ayuda:
-     EJERCICIO 1         te damos los casos          → escribís los tests
-     EJERCICIO 2         te damos casi todos         → los dos últimos los pensás vos
-     EJERCICIO 3         la función tiene un error   → lo encontrás con un test
-     EJERCICIOS 4, 5, 6  no te damos ningún caso     → los elegís vos
-     DESAFÍO FINAL       queda un error más          → y no te decimos dónde
+    Son seis ejercicios y un desafío, de más a menos ayuda:
+      EJERCICIO 1         te damos los casos          → escribís los tests
+      EJERCICIO 2         te damos casi todos         → los dos últimos los pensás vos
+      EJERCICIO 3         la función tiene un error   → lo encontrás con un test
+      EJERCICIOS 4, 5, 6  no te damos ningún caso     → los elegís vos
+      DESAFÍO FINAL       queda un error más          → y no te decimos dónde
 
-   Lo que tiene que hacer cada función está en el comentario que tiene
-   arriba, en `puntajes.js`. Leé el comentario, no el código.
+    Lo que tiene que hacer cada función está en el comentario que tiene
+    arriba, en `puntajes.js`. Leé el comentario, no el código.
 
-   Al final del archivo hay una verificación y seis preguntas.
+    Al final del archivo hay una verificación y seis preguntas.
    ═══════════════════════════════════════════════════════════════════ */
 
 // ─────────────────────────────────────────────────────────────────────
@@ -43,7 +43,7 @@ describe("calcularPuntaje", () => {
     expect(resultado).toBe(30);
   });
 
-  test("resta 5 puntos por cada error",() => {
+  test("resta 5 puntos por cada error", () => {
     const aciertos = 1;
     const errores = 5;
 
@@ -69,13 +69,13 @@ describe("calcularPuntaje", () => {
     expect(resultado).toBe(0)
   });
 
-  test("develve 0, y no un número negativo, cuando los errores restan más de lo que suman los aciertos",() => {
-        const aciertos = 1;
-        const errores = 5;
+  test("develve 0, y no un número negativo, cuando los errores restan más de lo que suman los aciertos", () => {
+    const aciertos = 1;
+    const errores = 5;
 
-        const resultado = calcularPuntaje(aciertos, errores)
+    const resultado = calcularPuntaje(aciertos, errores)
 
-        expect(resultado).toBe(0)
+    expect(resultado).toBe(0)
   }
   );
 });
@@ -91,27 +91,78 @@ describe("medalla", () => {
     expect(Medalla(250)).toBe("bronce");
   });
 
-  test("devuelve 'sin medalla' con un puntaje de 50",() => {
-    const puntaje = calcularPuntaje(5,0)
+  test("devuelve 'sin medalla' con un puntaje de 50", () => {
+    const puntaje = calcularPuntaje(5, 0)
 
     const medalla = Medalla(puntaje);
 
     expect(medalla).toBe("sin medalla")
 
+  });
+
+  test("devuelve 'plata' con un puntaje de 700", () => {
+    const puntaje = calcularPuntaje(70,0);
+
+    const medalla = Medalla(puntaje)
+
+    expect(medalla).toBe("plata");
+  });
+
+  test("devuelve 'oro' con un puntaje de 3000", () => {
+        const puntaje = calcularPuntaje(300,0);
+
+        const medalla = Medalla(puntaje)
+
+        expect(medalla).toBe("oro");
+  });
+
+  test("devuelve 'sin medalla' con 99 puntos (le falta uno para bronce)", () => {
+        const puntaje = calcularPuntaje(10,0);
+        const medalla = Medalla(puntaje - 1)
+
+        expect(medalla).toBe("sin medalla");
+  });
+  }
+  );
+  test("devuelve 'bronce' con exactamente 100 puntos", () => {
+        const puntaje = calcularPuntaje(10,0);
+        const medalla = Medalla(puntaje)
+
+        expect(medalla).toBe("bronce");
+  });
+
+  test("devuelve 'bronce' con 499 puntos (le falta uno para plata)",() => {
+        const puntaje = calcularPuntaje(50,0);
+        const medalla = Medalla(puntaje - 1)
+
+        expect(medalla).toBe("bronce");
 
   });
-  test.todo("devuelve 'plata' con un puntaje de 700");
-  test.todo("devuelve 'oro' con un puntaje de 3000");
+  test("devuelve 'plata' con exactamente 500 puntos",() => {
+        const puntaje = calcularPuntaje(50,0);
+        const medalla = Medalla(puntaje)
 
-  test.todo("devuelve 'sin medalla' con 99 puntos (le falta uno para bronce)");
-  test.todo("devuelve 'bronce' con exactamente 100 puntos");
+        expect(medalla).toBe("plata");
 
-  test.todo("devuelve 'bronce' con 499 puntos (le falta uno para plata)");
-  test.todo("devuelve 'plata' con exactamente 500 puntos");
+  });
+
 
   // Falta el cambio de plata a oro.
   // Escribí vos los dos tests, con su nombre, siguiendo el modelo de arriba.
-});
+
+    test("devuelve 'plata' con 999 puntos (le falta uno para plata)", () => {
+      const puntaje = calcularPuntaje(100,0)
+      const medalla = Medalla(puntaje - 1)
+
+      expect(medalla).toBe("plata")
+  })
+
+    test("devuelve 'oro' con exactamente 1000 puntos", () => {
+      const puntaje = calcularPuntaje(100,0)
+      const medalla = Medalla(puntaje)
+
+      expect(medalla).toBe("oro")
+  })
 
 // ─────────────────────────────────────────────────────────────────────
 // EJERCICIO 3 - Cazar el error
@@ -132,6 +183,41 @@ describe("bonusPorTiempo", () => {
   });
 
   // Seguí vos.
+
+  test("da 500 puntos de bonus si el nivel se termina en 60 segundos", () => {
+    const tiempo = 60;
+
+    const bonus = bonusPorTiempo(tiempo)
+
+    expect(bonus).toBe(500)
+  })
+
+  test("da 200 puntos de bonus si el nivel se termina en 61 segundos", () => {
+    const tiempo = 61;
+
+    const bonus = bonusPorTiempo(tiempo)
+
+    expect(bonus).toBe(200)
+  })
+
+    test("da 200 puntos de bonus si el nivel se termina en 120 segundos", () => {
+    const tiempo = 120;
+
+    const bonus = bonusPorTiempo(tiempo)
+
+    expect(bonus).toBe(200)
+  })
+
+    test("da 0 puntos de bonus si el nivel se termina pasando los 120 segundos", () => {
+    const tiempo = 121;
+
+    const bonus = bonusPorTiempo(tiempo)
+
+    expect(bonus).toBe(0)
+  })
+
+
+
 });
 
 // ─────────────────────────────────────────────────────────────────────
@@ -217,45 +303,45 @@ describe("validarNombre", () => {
 });
 
 /* ═══════════════════════════════════════════════════════════════════
-   DESAFÍO FINAL - el segundo error
+    DESAFÍO FINAL - el segundo error
 
-   En alguna de las funciones de los ejercicios 4, 5 y 6 hay escondido
-   UN error más. Esta vez no te decimos en cuál.
+    En alguna de las funciones de los ejercicios 4, 5 y 6 hay escondido
+    UN error más. Esta vez no te decimos en cuál.
 
-   Si tenés todo en verde, todavía no lo encontraste: a alguno de esos
-   tres ejercicios le falta un caso. Volvé y agregalo.
+    Si tenés todo en verde, todavía no lo encontraste: a alguno de esos
+    tres ejercicios le falta un caso. Volvé y agregalo.
 
-   Ojo: un error es cuando la función hace algo DISTINTO de lo que dice
-   su comentario. Si el comentario no dice qué pasa en un caso, eso no
-   es un error: es una pregunta para anotar (ver la pregunta 6).
+    Ojo: un error es cuando la función hace algo DISTINTO de lo que dice
+    su comentario. Si el comentario no dice qué pasa en un caso, eso no
+    es un error: es una pregunta para anotar (ver la pregunta 6).
 
-   Cuando lo encuentres, lo mismo que en el ejercicio 3: primero el
-   test en rojo, después el arreglo en `puntajes.js`.
+    Cuando lo encuentres, lo mismo que en el ejercicio 3: primero el
+    test en rojo, después el arreglo en `puntajes.js`.
 
-   ───────────────────────────────────────────────────────────────────
-   PREGUNTAS - respondé acá mismo, dentro de este comentario
+    ───────────────────────────────────────────────────────────────────
+    PREGUNTAS - respondé acá mismo, dentro de este comentario
 
-   1. Ejercicio 3: ¿con qué valor de `segundos` encontraste el error?  ______
+    1. Ejercicio 3: ¿con qué valor de `segundos` encontraste el error?  ______
       ¿Qué devolvía la función?  ______   ¿Qué tenía que devolver?  ______
 
-   2. ¿Qué cambiaste en `puntajes.js` para arreglarlo?
+    2. ¿Qué cambiaste en `puntajes.js` para arreglarlo?
       _______________________________________________________
 
-   3. Antes de encontrarlo, ¿cuántos tests de `bonusPorTiempo` tenías en
+    3. Antes de encontrarlo, ¿cuántos tests de `bonusPorTiempo` tenías en
       verde?  ______
       Estaban en verde y el error estaba igual. ¿Por qué no lo detectaban?
       _______________________________________________________
 
-   4. Desafío final: ¿en qué función estaba el segundo error?  ____________
+    4. Desafío final: ¿en qué función estaba el segundo error?  ____________
       ¿Con qué entrada lo encontraste?  ____________
       ¿Qué tiene en común esa entrada con la de la pregunta 1?
       _______________________________________________________
 
-   5. Verificación: ¿cuántos tests se pusieron en rojo?  ______
+    5. Verificación: ¿cuántos tests se pusieron en rojo?  ______
       ¿Cuál o cuáles?
       _______________________________________________________
 
-   6. Ejercicio 4: si dos jugadores tienen los mismos puntos, ¿cuál de los
+    6. Ejercicio 4: si dos jugadores tienen los mismos puntos, ¿cuál de los
       dos va primero en el podio? ¿Lo dice el comentario de la función?
       _______________________________________________________
    ═══════════════════════════════════════════════════════════════════ */

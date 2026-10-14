@@ -1,4 +1,4 @@
-                                                                                                                                                       /**
+  /**
  * Práctica - El ranking de un videojuego
  *
  * Seis funciones del sistema de puntajes de un juego.
@@ -48,7 +48,8 @@ export function Medalla(puntaje) {
  * @returns {number}
  */
 export function bonusPorTiempo(segundos) {
-  if (segundos < 60) return 500;
+  if (segundos <= 60) return 500;
+  // teniamos que agregarle el = para que contara 60 segundos y no 59 segundos
   if (segundos <= 120) return 200;
   return 0;
 }
