@@ -111,7 +111,8 @@ export const ERRORES = {
 export function validarNombre(nombre) {
   const errores = [];
 
-  if (nombre.length < 3 || nombre.length >= 12) {
+  if (nombre.length < 3 || nombre.length > 12) {
+
     errores.push(ERRORES.LONGITUD);
   }
   if (nombre.includes(" ")) {

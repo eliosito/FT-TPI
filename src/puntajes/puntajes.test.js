@@ -92,7 +92,7 @@ describe("medalla", () => {
   });
 
   test("devuelve 'sin medalla' con un puntaje de 50", () => {
-    const puntaje = calcularPuntaje(5, 0)
+    const puntaje = 50
 
     const medalla = Medalla(puntaje);
 
@@ -101,7 +101,7 @@ describe("medalla", () => {
   });
 
   test("devuelve 'plata' con un puntaje de 700", () => {
-    const puntaje = calcularPuntaje(70,0);
+    const puntaje = 700;
 
     const medalla = Medalla(puntaje)
 
@@ -109,60 +109,60 @@ describe("medalla", () => {
   });
 
   test("devuelve 'oro' con un puntaje de 3000", () => {
-        const puntaje = calcularPuntaje(300,0);
+    const puntaje = 3000;
 
-        const medalla = Medalla(puntaje)
+    const medalla = Medalla(puntaje)
 
-        expect(medalla).toBe("oro");
+    expect(medalla).toBe("oro");
   });
 
   test("devuelve 'sin medalla' con 99 puntos (le falta uno para bronce)", () => {
-        const puntaje = calcularPuntaje(10,0);
-        const medalla = Medalla(puntaje - 1)
+    const puntaje = 99;
+    const medalla = Medalla(puntaje)
 
-        expect(medalla).toBe("sin medalla");
+    expect(medalla).toBe("sin medalla");
   });
-  }
-  );
-  test("devuelve 'bronce' con exactamente 100 puntos", () => {
-        const puntaje = calcularPuntaje(10,0);
-        const medalla = Medalla(puntaje)
+});
 
-        expect(medalla).toBe("bronce");
-  });
+test("devuelve 'bronce' con exactamente 100 puntos", () => {
+  const puntaje = 100;
+  const medalla = Medalla(puntaje)
 
-  test("devuelve 'bronce' con 499 puntos (le falta uno para plata)",() => {
-        const puntaje = calcularPuntaje(50,0);
-        const medalla = Medalla(puntaje - 1)
+  expect(medalla).toBe("bronce");
+});
 
-        expect(medalla).toBe("bronce");
+test("devuelve 'bronce' con 499 puntos (le falta uno para plata)", () => {
+  const puntaje = 499;
+  const medalla = Medalla(puntaje)
 
-  });
-  test("devuelve 'plata' con exactamente 500 puntos",() => {
-        const puntaje = calcularPuntaje(50,0);
-        const medalla = Medalla(puntaje)
+  expect(medalla).toBe("bronce");
 
-        expect(medalla).toBe("plata");
+});
+test("devuelve 'plata' con exactamente 500 puntos", () => {
+  const puntaje = 500;
+  const medalla = Medalla(puntaje)
 
-  });
+  expect(medalla).toBe("plata");
+
+});
 
 
-  // Falta el cambio de plata a oro.
-  // Escribí vos los dos tests, con su nombre, siguiendo el modelo de arriba.
+// Falta el cambio de plata a oro.
+// Escribí vos los dos tests, con su nombre, siguiendo el modelo de arriba.
 
-    test("devuelve 'plata' con 999 puntos (le falta uno para plata)", () => {
-      const puntaje = calcularPuntaje(100,0)
-      const medalla = Medalla(puntaje - 1)
+test("devuelve 'plata' con 999 puntos (le falta uno para plata)", () => {
+  const puntaje = 999
+  const medalla = Medalla(puntaje)
 
-      expect(medalla).toBe("plata")
-  })
+  expect(medalla).toBe("plata")
+})
 
-    test("devuelve 'oro' con exactamente 1000 puntos", () => {
-      const puntaje = calcularPuntaje(100,0)
-      const medalla = Medalla(puntaje)
+test("devuelve 'oro' con exactamente 1000 puntos", () => {
+  const puntaje = 1000
+  const medalla = Medalla(puntaje)
 
-      expect(medalla).toBe("oro")
-  })
+  expect(medalla).toBe("oro")
+})
 
 // ─────────────────────────────────────────────────────────────────────
 // EJERCICIO 3 - Cazar el error
@@ -200,7 +200,7 @@ describe("bonusPorTiempo", () => {
     expect(bonus).toBe(200)
   })
 
-    test("da 200 puntos de bonus si el nivel se termina en 120 segundos", () => {
+  test("da 200 puntos de bonus si el nivel se termina en 120 segundos", () => {
     const tiempo = 120;
 
     const bonus = bonusPorTiempo(tiempo)
@@ -208,7 +208,7 @@ describe("bonusPorTiempo", () => {
     expect(bonus).toBe(200)
   })
 
-    test("da 0 puntos de bonus si el nivel se termina pasando los 120 segundos", () => {
+  test("da 0 puntos de bonus si el nivel se termina pasando los 120 segundos", () => {
     const tiempo = 121;
 
     const bonus = bonusPorTiempo(tiempo)
@@ -249,8 +249,69 @@ describe("podio", () => {
     expect(resultado).toEqual(["Beto", "Caro", "Ana"]);
   });
 
-  // Seguí vos.
+  test("si solo son 3 jugadores devuelve los nombres ordenados por cantidad de puntos de mayor a menor" , () => {
+    const jugadores = [
+      { nombre: "Ana", puntos: 300 },
+      { nombre: "Beto", puntos: 900 },
+      { nombre: "Caro", puntos: 500 },
+    ];
+
+    const resultado = podio(jugadores);
+
+    expect(resultado).toEqual(["Beto", "Caro", "Ana"]);
+  })
+
+    test("si hay menos de 3 jugadores, devuelve los nombres ordenados por cantidad de puntos de mayor a menor" , () => {
+    const jugadores = [
+      { nombre: "Beto", puntos: 900 },
+      { nombre: "Caro", puntos: 500 },
+    ];
+
+    const resultado = podio(jugadores);
+
+    expect(resultado).toEqual(["Beto", "Caro"]);
+  })
+
+    test("si no hay ningun jugador, devuelve un array vacio" , () => {
+    const jugadores = [];
+
+    const resultado = podio(jugadores);
+
+    expect(resultado).toEqual([]);
+  })
+
+    test("si hay una lista de jugadores, aunque sea el ultimo jugador, lo posiciona en primer lugar si tiene mayor cantidad de puntos" , () => {
+    const jugadores = [
+      { nombre: "Beto", puntos: 900 },
+      { nombre: "Caro", puntos: 1500 },
+      { nombre: "Hugo", puntos: 2900 },
+      { nombre: "Carolina", puntos: 3500 },
+      { nombre: "elio", puntos: 4900 },
+      { nombre: "ye", puntos: 5500 },
+      { nombre: "wick", puntos: 6900 },
+      { nombre: "mc", puntos: 100000 },
+    ];
+
+    const resultado = podio(jugadores);
+
+    expect(resultado).toEqual(["mc", "wick", "ye"]);
+  })
+
+      test("si hay 2 o mas jugadores con el misma cantidad de puntos los ordena de mayor a menor por su posicion en la lista" , () => {
+    const jugadores = [
+      { nombre: "Ana", puntos: 300 },
+      { nombre: "Beto", puntos: 900 },
+      { nombre: "Caro", puntos: 900 },
+    ];
+
+    const resultado = podio(jugadores);
+
+    expect(resultado).toEqual(["Beto", "Caro","Ana"]);
+  })
+
 });
+
+
 
 // ─────────────────────────────────────────────────────────────────────
 // EJERCICIO 5
@@ -265,6 +326,27 @@ describe("formatearTiempo", () => {
   test("devuelve '1:15' cuando pasaron 75 segundos", () => {
     expect(formatearTiempo(75)).toBe("1:15");
   });
+
+  test("devuelve '0:00' cuando pasaron 0 segundos", () => {
+    expect(formatearTiempo(0)).toBe("0:00");
+  });
+
+  test("devuelve '0:59' cuando pasaron 59 segundos", () => {
+    expect(formatearTiempo(59)).toBe("0:59");
+  });
+
+  test("devuelve '1:00' cuando pasaron 1 minuto exacto", () => {
+    expect(formatearTiempo(60)).toBe("1:00");
+  });
+
+  test("devuelve '0:09' cuando pasaron 9 segundos", () => {
+    expect(formatearTiempo(9)).toBe("0:09");
+  });
+
+  test("devuelve '10:00' cuando pasaron 600 segundos", () => {
+    expect(formatearTiempo(600)).toBe("10:00");
+  });
+
 
   // Seguí vos.
 });
@@ -299,7 +381,58 @@ describe("validarNombre", () => {
     expect(resultado.errores).toContain(ERRORES.ESPACIOS);
   });
 
-  // Seguí vos.
+    test("rechaza un nombre que tenga menos de 3 letras", () => {
+    const resultado = validarNombre("Ra");
+
+    expect(resultado.valido).toBe(false);
+    expect(resultado.errores).toContain(ERRORES.LONGITUD);
+  });
+
+  
+
+    test("rechaza un nombre que tenga mas de 12 letras", () => {
+    const resultado = validarNombre("eliositowick1");
+
+    expect(resultado.valido).toBe(false);
+    expect(resultado.errores).toContain(ERRORES.LONGITUD);
+  });
+
+    test("rechaza un nombre que cumpla una condicion de 3", () => {
+    const resultado = validarNombre(" 1sray");
+
+    expect(resultado.valido).toBe(false);
+    expect(resultado.errores).toContain(ERRORES.INICIAL);
+    expect(resultado.errores).toContain(ERRORES.ESPACIOS);
+
+  });
+  
+    test("rechaza un nombre que cumpla dos condiciones de 3", () => {
+    const resultado = validarNombre(" Ray");
+
+    expect(resultado.valido).toBe(false);
+    expect(resultado.errores).toContain(ERRORES.ESPACIOS);
+
+  });
+
+    test("rechaza un nombre vacio", () => {
+    const resultado = validarNombre("");
+
+    expect(resultado.valido).toBe(false);
+
+
+  });
+    // error 2
+    test("acepta un nombre que tenga 12 letras", () => {
+    const resultado = validarNombre("eliositowick");
+
+    expect(resultado.valido).toBe(true);
+
+  });
+
+
+
+
+  // Seguí vos.v
 });
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -321,27 +454,31 @@ describe("validarNombre", () => {
     ───────────────────────────────────────────────────────────────────
     PREGUNTAS - respondé acá mismo, dentro de este comentario
 
-    1. Ejercicio 3: ¿con qué valor de `segundos` encontraste el error?  ______
-      ¿Qué devolvía la función?  ______   ¿Qué tenía que devolver?  ______
+    1. Ejercicio 3: ¿con qué valor de `segundos` encontraste el error?  60
+      ¿Qué devolvía la función?  200   ¿Qué tenía que devolver?  500
 
     2. ¿Qué cambiaste en `puntajes.js` para arreglarlo?
-      _______________________________________________________
+      Le agregue un = a la condicion ya que tomaba le 60 como 200 puntos
 
     3. Antes de encontrarlo, ¿cuántos tests de `bonusPorTiempo` tenías en
-      verde?  ______
+      verde?  tenia solo 1 ya que estuve controlando uno por uno
       Estaban en verde y el error estaba igual. ¿Por qué no lo detectaban?
       _______________________________________________________
 
-    4. Desafío final: ¿en qué función estaba el segundo error?  ____________
-      ¿Con qué entrada lo encontraste?  ____________
-      ¿Qué tiene en común esa entrada con la de la pregunta 1?
-      _______________________________________________________
+    4. Desafío final: ¿en qué función estaba el segundo error?  validarNombre
+      ¿Con qué entrada lo encontraste?  eliositowick
+      ¿Qué tiene en común esa entrada con la de lja pregunta 1?
+      cumple con un requesito que fue escrito, pero al tener mal el codigo da invalido
 
-    5. Verificación: ¿cuántos tests se pusieron en rojo?  ______
+    5. Verificación: ¿cuántos tests se pusieron en rojo?  1
       ¿Cuál o cuáles?
-      _______________________________________________________
+      Validar nombre de 12 letras, no lo habia escrito y no me di cuenta del error
 
     6. Ejercicio 4: si dos jugadores tienen los mismos puntos, ¿cuál de los
       dos va primero en el podio? ¿Lo dice el comentario de la función?
-      _______________________________________________________
+      El comentario de la funcion no lo dice ,asi que lo escribi en el test: si dos o mas
+      o mas jugadores tienen el mismo puntaje se los ordena por su posicion en la lista.
+
+
    ═══════════════════════════════════════════════════════════════════ */
+
