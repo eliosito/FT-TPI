@@ -1,3 +1,6 @@
+<p align="center">
+  <img src="public/logo.jpg" alt="WickHub Logo" width="180">
+</p>
 
 #  Fronted de Wickhub (TPI)
 
