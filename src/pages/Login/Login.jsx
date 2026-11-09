@@ -1,13 +1,26 @@
 import { useLocation, Link } from "wouter";
 import { useState } from "react";
+import api from "../../api.js"
 import "./Login.css";
 
 function Login() {
 
+  async function login(nombre, contrasena) {
+    try {
+      const respuesta = await api.post("login", { nombre, contrasena});
+      localStorage.setItem("token", respuesta.data.token);
+      return true;
+    }  catch (error){
+      console.error(error.response?.status, error.response?.data);
+      return false;
+  }
+    
+  }
+
   const [, navigate] = useLocation()
   
   const [form , setForm ] = useState({
-    email: "",
+    nombre: "",
     password: ""
   })
 
@@ -21,46 +34,32 @@ function Login() {
     })
   }
 
-  const usuarioFalso = {
-    email: "vulprasoft@gmail.com",
-    password: "nicolasalvaradodeidad"
+
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const validacionesErrores = validacion();
+  if (Object.keys(validacionesErrores).length > 0) {
+    setErrores(validacionesErrores);
+    return;
   }
 
-  const autenticacionUsuario = () => {
-    return (
-      form.email === usuarioFalso.email &&
-      form.password === usuarioFalso.password
-    )
+  const ok = await login(form.nombre, form.password);
+
+  if (ok) {
+    setErrores({});
+    navigate("/");
+  } else {
+    setErrores({ general: "Credenciales incorrectas" });
   }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const validacionesErrores = validacion();
-
-    // si hay 1 o mas errores se ejetuca lo siguiente y corta el formulario
-    if (Object.keys(validacionesErrores).length > 0 ) {
-      setErrores(validacionesErrores);
-      return;
-    }
-
-    if (autenticacionUsuario()) {
-        setErrores({});
-
-       navigate("/");
-
-    } else {
-      setErrores({
-        general: "Credenciales Incorrectas"
-      })
-
-    }
-  }
+};
 
     const validacion = () => {
     let newErrores ={};
-    if (!form.email) {
-      newErrores.email = "El email es obligatorio";
+    if (!form.nombre) {
+      newErrores.nombre = "El nombre es obligatorio";
     }
 
     if (!form.password) {
@@ -93,16 +92,16 @@ function Login() {
           <form className="login-form" onSubmit={handleSubmit}>
 
             <div className="form-group">
-              <label htmlFor="correo">Correo</label>
+              <label htmlFor="nombre">nombre</label>
               <input
-                type="email"
-                name="email"
-                placeholder="Ingresá tu correo"
+                type="nombre"
+                name="nombre"
+                placeholder="Ingresá tu nombre"
                 onChange={handleChange}
-                value={form.email}
+                value={form.nombre}
               />
 
-              {errores.email && <span className="error">{errores.email}</span>}
+              {errores.email && <span className="error">{errores.nombre}</span>}
             </div>
 
             <div className="form-group">
