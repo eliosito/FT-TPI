@@ -1,4 +1,4 @@
-import { useLocation } from "wouter";
+import { useLocation, Link } from "wouter";
 import { useState } from "react";
 import "./Login.css";
 
@@ -138,7 +138,8 @@ function Login() {
 
             <p className="register-text">
               ¿Todavía no tenés cuenta?{" "}
-              <a href="#">Creala acá</a>
+              <Link to='/register'>Creala acá</Link>
+
             </p>
 
           </form>
