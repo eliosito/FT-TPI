@@ -1,0 +1,277 @@
+
+/* Reinicio básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.register-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  color: #292929;
+}
+
+/* PANEL IZQUIERDO */
+
+.register-form-section {
+  order: 1;
+  width: 50%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  background-color: #ffffff;
+}
+
+.register-content {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ENCABEZADO */
+
+.register-header {
+  margin-bottom: 55px;
+}
+
+.register-header h1 {
+  font-size: 30px;
+  font-weight: 750;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.register-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #858585;
+}
+
+/* FORMULARIO */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.register-name-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.form-group input {
+  width: 100%;
+  height: 42px;
+  padding: 0 13px;
+  border: 1px solid #a5a5a5;
+  border-radius: 8px;
+  background-color: #eeeeee;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 2px 3px #00000030;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #C96969;
+  background-color: #ffffff;
+}
+
+/* OPCIONES */
+
+.register-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -16px;
+  font-size: 11px;
+}
+
+.remember-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.remember-option input {
+  accent-color: #C96969;
+  width: 16px;
+  height: 16px;
+}
+
+.forgot-password,
+.register-text a {
+  color: #1727a1;
+  text-decoration: none;
+  font-weight: 650;
+}
+
+.forgot-password:hover,
+.register-text a:hover {
+  text-decoration: underline;
+}
+
+/* BOTÓN PRINCIPAL */
+
+.register-button {
+  width: 100%;
+  height: 52px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: #858585;
+  color: #292929;
+  font-size: 21px;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 3px 4px #00000035;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.register-button:hover {
+  background-color: #707070;
+  transform: translateY(-1px);
+}
+
+.register-button span {
+  margin-left: 5px;
+}
+
+/* REGISTRO */
+
+.register-text {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: -18px;
+}
+
+/* INICIO CON REDES SOCIALES */
+
+.social-register {
+  margin-top: 30px;
+}
+
+.social-register p {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 650;
+  margin-bottom: 5px;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-button {
+  flex: 1;
+  height: 38px;
+  border: 1px solid #aaaaaa;
+  border-radius: 8px;
+  background-color: #eeeeee;
+  color: #292929;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 3px #00000030;
+  transition: background-color 0.2s;
+}
+
+.social-button:hover {
+  background-color: #dddddd;
+}
+
+/* PANEL DERECHO */
+
+.register-visual-section {
+  order: 0;
+  width: 50%;
+  min-height: 100vh;
+  background-color: #C96969;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  padding: 35px;
+}
+
+.visual-message {
+  text-align: right;
+}
+
+.visual-message h2 {
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.15;
+  color: #292929;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .register-form-section {
+    width: 60%;
+    padding: 35px;
+  }
+
+  .register-visual-section {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .register-container {
+    flex-direction: column;
+  }
+
+  .register-visual-section {
+    order: -1;
+    width: 100%;
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .visual-message h2 {
+    font-size: 20px;
+  }
+
+  .register-form-section {
+    width: 100%;
+    min-height: auto;
+    flex: 1;
+    padding: 45px 25px;
+  }
+
+  .register-content {
+    max-width: 440px;
+  }
+
+  .register-header {
+    margin-bottom: 40px;
+  }
+}
+.error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}

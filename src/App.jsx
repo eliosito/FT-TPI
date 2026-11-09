@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Route, Switch } from "wouter";
 import './App.css'
 import Login from './pages/Login/Login'
+import Register from './pages/Register/Register'
 import Home from './pages/Home'
 import Publicaciones from './pages/Publicaciones';
 import Rastro from './pages/Rastro';
@@ -39,6 +40,12 @@ function App() {
         <Route path="/login">
           <AuthLayout>
             <Login/>
+          </AuthLayout>
+        </Route>
+
+        <Route path="/register">
+          <AuthLayout>
+            <Register/>
           </AuthLayout>
         </Route>
 
