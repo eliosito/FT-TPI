@@ -14,7 +14,7 @@
   color: #292929;
 }
 
-/* PANEL IZQUIERDO */
+/* PANEL dderecho */
 
 .register-form-section {
   order: 1;
@@ -104,25 +104,6 @@
   font-size: 11px;
 }
 
-.remember-option {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.remember-option input {
-  accent-color: #C96969;
-  width: 16px;
-  height: 16px;
-}
-
-.forgot-password,
-.register-text a {
-  color: #1727a1;
-  text-decoration: none;
-  font-weight: 650;
-}
 
 .forgot-password:hover,
 .register-text a:hover {

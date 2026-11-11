@@ -1,16 +1,31 @@
 import { Link, useLocation } from "wouter";
 import { useState } from "react";
+import api from "../../api.js"
 import "./Register.css";
 
 function Register() {
 
+  async function register(nombre, apellido, dni, contrasena, email) {
+    try {
+      const respuesta = await api.post("usuarios", { nombre, apellido, dni, contrasena, email });
+      localStorage.setItem("token", respuesta.data.token);
+      return true;
+    } catch (error) {
+      console.error(error.response?.status, error.response?.data);
+      return false;
+    }
+  }
+
+
+
   const [, navigate] = useLocation()
-  
-  const [form , setForm ] = useState({
+
+  const [form, setForm] = useState({
     nombre: "",
     apellido: "",
-    email: "",
-    password: ""
+    dni: "",
+    password: "",
+    email: ""
   })
 
   const [errores, setErrores] = useState({});
@@ -23,44 +38,28 @@ function Register() {
     })
   }
 
-  const usuarioFalso = {
-    email: "vulprasoft@gmail.com",
-    password: "nicolasalvaradodeidad"
-  }
-
-  const autenticacionUsuario = () => {
-    return (
-      form.email === usuarioFalso.email &&
-      form.password === usuarioFalso.password
-    )
-  }
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validacionesErrores = validacion();
-
-    // si hay 1 o mas errores se ejetuca lo siguiente y corta el formulario
-    if (Object.keys(validacionesErrores).length > 0 ) {
+    if (Object.keys(validacionesErrores).length > 0) {
       setErrores(validacionesErrores);
       return;
     }
 
-    if (autenticacionUsuario()) {
-        setErrores({});
+    const ok = await register(form.nombre, form.apellido, form.dni, form.password, form.email);
 
-       navigate("/");
-
+    if (ok) {
+      setErrores({});
+      navigate("/");
     } else {
-      setErrores({
-        general: "Credenciales Incorrectas"
-      })
-
+      setErrores({ general: "Credenciales incorrectas" });
     }
-  }
+  };
 
-    const validacion = () => {
-    let newErrores ={};
+
+  const validacion = () => {
+    let newErrores = {};
     if (!form.nombre.trim()) {
       newErrores.nombre = "El nombre es obligatorio";
     }
@@ -130,6 +129,18 @@ function Register() {
             </div>
 
             <div className="form-group">
+              <label htmlFor="dni">DNI</label>
+              <input
+                id="dni"
+                type="text"
+                name="dni"
+                placeholder="Ingresá tu DNI"
+                onChange={handleChange}
+                value={form.dni}
+              />
+            </div>
+
+            <div className="form-group">
               <label htmlFor="email">Correo</label>
               <input
                 id="email"
@@ -157,7 +168,7 @@ function Register() {
               {errores.password && <span className="error">{errores.password}</span>}
 
             </div>
-              {errores.general && <span className="error">{errores.general}</span>}
+            {errores.general && <span className="error">{errores.general}</span>}
 
 
             <button type="submit" className="register-button">
