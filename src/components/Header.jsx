@@ -9,6 +9,10 @@ import { IoSearch } from "react-icons/io5";
 
 
 function Header() {
+    function CerrarSesion  () {   
+        localStorage.removeItem("token")
+
+    }
     return (
         <header className="wick-header">
             <div className="header-container">
@@ -22,6 +26,7 @@ function Header() {
                     <Link href="/">Home</Link>
                     <Link href="/publicaciones">Publicaciones</Link>
                     <Link href="/rastro">Mi rastro</Link>
+                    <button onClick={CerrarSesion} > Cerrar Sesion</button>
                 </nav>
 
                 <div className="header-icons">
