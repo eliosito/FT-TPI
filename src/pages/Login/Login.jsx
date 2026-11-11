@@ -58,8 +58,8 @@ const handleSubmit = async (e) => {
 
     const validacion = () => {
     let newErrores ={};
-    if (!form.nombre) {
-      newErrores.nombre = "El nombre es obligatorio";
+    if (!form.email) {
+      newErrores.email = "El email es obligatorio";
     }
 
     if (!form.password) {

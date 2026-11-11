@@ -10,6 +10,8 @@ import Header from './components/Header';
 import PublicLayout from './layouts/PublicLayout';
 import NoEncontrada from './pages/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
+import RutaProtegida from './components/RutaProtegida';
+import RutaPublica from './components/RutaPublica';
 
 function App() {
 
@@ -31,26 +33,36 @@ function App() {
         </Route>
 
         <Route path="/rastro">
-          <PublicLayout>
-            <Rastro />
-          </PublicLayout>
+          <RutaProtegida roles={["admin"]}>
+            <PublicLayout>
+              <Rastro />
+            </PublicLayout>
+          </RutaProtegida>
+
         </Route>
 
 
         <Route path="/login">
-          <AuthLayout>
-            <Login/>
-          </AuthLayout>
+          <RutaPublica>
+            <AuthLayout>
+              <Login />
+            </AuthLayout>
+          </RutaPublica>
+
         </Route>
 
         <Route path="/register">
-          <AuthLayout>
-            <Register/>
-          </AuthLayout>
+          <RutaPublica>
+            <AuthLayout>
+              <Register />
+            </AuthLayout>
+
+          </RutaPublica>
+
         </Route>
 
         <Route>
-          <NoEncontrada/>
+          <NoEncontrada />
         </Route>
 
 
