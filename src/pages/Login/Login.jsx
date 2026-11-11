@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
               />
 
               {errores.password && <span className="error">{errores.password}</span>}
-
+3000
             </div>
               {errores.general && <span className="error">{errores.general}</span>}
 
