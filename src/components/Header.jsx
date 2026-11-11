@@ -7,10 +7,15 @@ import { LuShoppingCart } from "react-icons/lu";
 
 import { IoSearch } from "react-icons/io5";
 
+import { useLocation } from "wouter";
 
 function Header() {
+    const [, navigate] = useLocation()
+    
     function CerrarSesion  () {   
         localStorage.removeItem("token")
+        navigate("/login")
+        
 
     }
     return (
