@@ -5,9 +5,9 @@ import "./Login.css";
 
 function Login() {
 
-  async function login(nombre, contrasena) {
+  async function login(email, contrasena) {
     try {
-      const respuesta = await api.post("login", { nombre, contrasena});
+      const respuesta = await api.post("login", { email, contrasena});
       localStorage.setItem("token", respuesta.data.token);
       return true;
     }  catch (error){
@@ -20,7 +20,7 @@ function Login() {
   const [, navigate] = useLocation()
   
   const [form , setForm ] = useState({
-    nombre: "",
+    email: "",
     password: ""
   })
 
@@ -46,11 +46,11 @@ const handleSubmit = async (e) => {
     return;
   }
 
-  const ok = await login(form.nombre, form.password);
+  const ok = await login(form.email, form.password);
 
   if (ok) {
     setErrores({});
-    navigate("/");
+    navigate("/", { replace: true });
   } else {
     setErrores({ general: "Credenciales incorrectas" });
   }
@@ -92,16 +92,16 @@ const handleSubmit = async (e) => {
           <form className="login-form" onSubmit={handleSubmit}>
 
             <div className="form-group">
-              <label htmlFor="nombre">nombre</label>
+              <label htmlFor="email">email</label>
               <input
-                type="nombre"
-                name="nombre"
-                placeholder="Ingresá tu nombre"
+                type="email"
+                name="email"
+                placeholder="Ingresá tu email"
                 onChange={handleChange}
-                value={form.nombre}
+                value={form.email}
               />
 
-              {errores.email && <span className="error">{errores.nombre}</span>}
+              {errores.email && <span className="error">{errores.email}</span>}
             </div>
 
             <div className="form-group">
