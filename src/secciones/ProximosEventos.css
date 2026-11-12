@@ -1,0 +1,28 @@
+
+.proximos-eventos {
+    width: 100%;
+    padding: 30px 4%;
+}
+
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.seccion-header h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.seccion-header a {
+    text-decoration: none;
+    color: #3A7E8D;
+}
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+}
