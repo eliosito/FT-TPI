@@ -7,7 +7,8 @@ function Register() {
 
   async function register(nombre, apellido, dni, contrasena, email) {
     try {
-      const respuesta = await api.post("usuarios", { nombre, apellido, dni, contrasena, email });
+      await api.post("usuarios", { nombre, apellido, dni, contrasena, email });
+      const respuesta = await api.post("login", {email , contrasena})
       localStorage.setItem("token", respuesta.data.token);
       return true;
     } catch (error) {
@@ -51,7 +52,7 @@ function Register() {
 
     if (ok) {
       setErrores({});
-      navigate("/");
+      navigate("/", { replace: true});
     } else {
       setErrores({ general: "Credenciales incorrectas" });
     }
