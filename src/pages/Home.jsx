@@ -1,6 +1,7 @@
 import React from 'react'
 import ProximosEventos from '../secciones/ProximosEventos'
 import Destacados from '../secciones/Destacados'
+import Publicaciones from '../secciones/Publicaciones'
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
 
       <Destacados/>
     
+      <Publicaciones/>
 
     </div>
   )
