@@ -6,6 +6,7 @@ import Register from './pages/Register/Register'
 import Home from './pages/Home'
 import Publicaciones from './pages/Publicaciones';
 import Rastro from './pages/Rastro';
+import PerfilOrganizacion from './pages/PerfilOrganizacion/PerfilOrganizacion';
 import Header from './components/Header';
 import PublicLayout from './layouts/PublicLayout';
 import NoEncontrada from './pages/NoEncontrada';
@@ -59,6 +60,12 @@ function App() {
 
           </RutaPublica>
 
+        </Route>
+
+        <Route path="/organizacion/:id">
+          <PublicLayout>
+            <PerfilOrganizacion />
+          </PublicLayout>
         </Route>
 
         <Route>
