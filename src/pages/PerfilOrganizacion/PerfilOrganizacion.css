@@ -72,6 +72,17 @@
   min-width: 0;
 }
 
+.org-layout > .Publicaciones {
+  box-sizing: border-box;
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding: 20px 0;
+}
+
+.org-layout > .Publicaciones .publicaciones-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+}
+
 .org-loading {
   padding: 24px 4%;
 }

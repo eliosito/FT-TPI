@@ -27,7 +27,7 @@ function Publicaciones() {
             
             {publicacions.map((publicacion) => (
                 <TarjetaPublicacion
-                key={publicacion.id_evento}
+                key={publicacion.id_publicacion}
                 titulo={publicacion.titulo}
                 descripcion={publicacion.descripcion}
                 imagen={publicacion.img_url}

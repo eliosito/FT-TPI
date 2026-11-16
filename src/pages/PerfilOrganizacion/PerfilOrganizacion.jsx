@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'wouter';
 import api from "../../api.js";
 import OrgUltimosEventos from '../../secciones/Perfiles/OrgUltimosEventos.jsx';
+import OrgPublicaciones from '../../secciones/Perfiles/OrgPublicaciones.jsx';
 import "./PerfilOrganizacion.css";
 
 export default function PerfilOrganizacion() {
@@ -55,10 +56,13 @@ export default function PerfilOrganizacion() {
           <h2>Creado el</h2>
           <p>{org.creacion}</p>
         </section>
-       
+
       </article>
 
       <OrgUltimosEventos idOrg={id} />
+
+      <OrgPublicaciones idOrg={id} />
+
     </main>
   );
 }
