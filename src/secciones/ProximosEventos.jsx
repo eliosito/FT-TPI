@@ -5,15 +5,19 @@ import { traerEventos } from "../services/eventos";
 function ProximosEventos() {
     const [eventos, setEventos] = useState([]);
     const [error, setError] = useState(null)
-    
+
     useEffect(() => {
-        traerEventos()
-        .then(setEventos)
-        .catch((error) => {
-            console.error(err.response?.status, err.response?.data)
-            setError("No se pudieron cargar los evenetos")
-        })
-    },[])
+        async function cargar() {
+            try {
+                const datos = await traerEventos();
+                setEventos(datos);
+            } catch (err) {
+                console.error(err.response?.status, err.response?.data);
+                setError("No se pudieron cargar los eventos");
+            }
+        }
+        cargar();
+    }, [])
 
     return (
         <section className="proximos-eventos">

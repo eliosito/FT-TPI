@@ -1,16 +1,13 @@
 import api from "../api.js";
 
-let promesa = null;
+export async function traerEventos(params = {}) {
+  const respuesta = await api.get("/eventos", { params });
+  return respuesta.data;
+}
 
-export function traerEventos() {
-  if (!promesa) {
-    promesa = api
-      .get("/eventos")
-      .then((respuesta) => respuesta.data)
-      .catch((error) => {
-        promesa = null;          // si falló, permitir reintentar
-        throw error;
-      });
-  }
-  return promesa;
+export async function traerEventosUsh() {
+  const respuesta = await api.get("/eventos", {
+    params: { lugar: "ushuaia", limite: 5 },
+  });
+  return respuesta.data;
 }
