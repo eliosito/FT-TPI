@@ -9,7 +9,7 @@ function ProximosEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos();
+                const datos = await traerEventos({orden:"viejo"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -20,7 +20,7 @@ function ProximosEventos() {
     }, [])
 
     return (
-        <section className="proximos-eventos">
+        <section className="eventos">
 
             <div className="seccion-header">
                 <h2>Explora los próximos eventos</h2>

@@ -7,12 +7,16 @@ function Publicaciones() {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        traerPublicaciones()
-        .then(setPublicacion)
-        .catch((error) => {
-            console.error(err.response?.status, err.response?.data)
-            setError("No se pudieron cargar las publicaciones")
-        })
+        async function cargar() {
+            try {
+                const datos = await traerPublicaciones();
+                setPublicacion(datos);
+            } catch (err) {
+                console.error(err.response?.status, err.response?.data);
+                setError("No se pudieron cargar las publicaciones");
+            }
+        }
+        cargar();
     },[])
 
     return (

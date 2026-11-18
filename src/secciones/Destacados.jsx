@@ -20,7 +20,7 @@ function Destacados() {
     },[])
 
     return (
-        <section className="proximos-eventos">
+        <section className="eventos">
 
             <div className="seccion-header">
                 <h2>Eventos Destacados</h2>

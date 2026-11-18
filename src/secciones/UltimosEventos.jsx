@@ -8,23 +8,23 @@ function UltimosEventos() {
     const [error, setError] = useState(null);
     
     useEffect(() => {
-        traerEventos()
-        .then((data) => {
-            // Ordenar por fecha
-            const eventosOrdenados = data.sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
-            setEventos(eventosOrdenados);
-        })
-        .catch((error) => {
-            console.error(error.response?.status, error.response?.data);
-            setError("No se pudieron cargar los eventos");
-        });
+        async function cargar() {
+            try {
+                const datos = await traerEventos({orden: "nuevo"});
+                setEventos(datos);
+            } catch (err) {
+                console.error(err.response?.status, err.response?.data);
+                setError("No se pudieron cargar los eventos");
+            }
+        }
+        cargar();
     }, []);
 
     return (
-        <section className="ultimos-eventos">
+        <section className="eventos">
 
             <div className="seccion-header">
-                <h2>¡No te los pierdas!+</h2>
+                <h2>¡Ultimos eventos!+</h2>
                 <a href="#">Ver todos</a>
             </div>
 

@@ -1,16 +1,7 @@
 import api from "../api.js";
 
-let promesa = null;
-
-export function traerEventosOrg(id) {
-  if (!promesa) {
-    promesa = api
-      .get(`/eventos/org/${id}`)
-      .then((respuesta) => respuesta.data)
-      .catch((error) => {
-        promesa = null;          // si falló, permitir reintentar
-        throw error;
-      });
-  }
-  return promesa;
+export async function traerEventosOrg(id) {
+  const respuesta = await api.get(`/eventos/org/${id}`)
+  return respuesta.data;
+  
 }
