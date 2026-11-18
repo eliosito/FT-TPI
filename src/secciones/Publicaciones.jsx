@@ -17,31 +17,33 @@ function Publicaciones() {
             }
         }
         cargar();
-    },[])
+    }, [])
 
     return (
         <section className="Publicaciones">
 
-        <div className="seccion-header">
-            <h2>Las publicaciones + nuevas</h2>
-            <a href="#">Ver todos</a>
-        </div>
+            <div className="seccion-header">
+                <h2>Las publicaciones + nuevas</h2>
+                <a href="#">Ver todos</a>
+            </div>
 
-        <div className="publicaciones-grid">
-            
-            {publicacions.map((publicacion) => (
-                <TarjetaPublicacion
-                key={publicacion.id_publicacion}
-                titulo={publicacion.titulo}
-                descripcion={publicacion.descripcion}
-                imagen={publicacion.img_url}
-                fecha={publicacion.fecha_creacion}
-                
-                />
+            <div className="publicaciones-grid">
 
-            ))}
+                {publicacions.map((publicacion) => (
+                    <TarjetaPublicacion
+                        key={publicacion.id_publicacion}
+                        titulo={publicacion.titulo}
+                        descripcion={publicacion.descripcion}
+                        imagen={publicacion.img_url}
+                        fecha={publicacion.fecha_creacion}
+                        nombreOrganizacion={publicacion.nombre}
+                        fotoOrganizacion={publicacion.portada}
+                        organizador_id={publicacion.organizador_id}
+                    />
 
-        </div>
+                ))}
+
+            </div>
 
         </section>
     );

@@ -1,93 +1,138 @@
-[class="tarjeta.publicacion"] {
+.tarjeta-publicacion {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-    min-height: 320px;
-    overflow: hidden;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 880px;
+    min-height: 420px;
     background: #fff;
-    border-radius: 0 18px 18px 0;
-    color: #080808;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
 }
 
+/* Imagen */
 .tarjetaP-imagen {
-    min-width: 0;
-    min-height: 0;
-    width: 100%;
-    height: 100%;
-    align-self: stretch;
-    overflow: hidden;
     background: #000;
 }
 
 .tarjetaP-imagen img {
-    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
+/* Info */
 .tarjetaP-info {
     display: flex;
     flex-direction: column;
-    gap: 14px;
     min-width: 0;
-    padding: 20px;
+    padding: 14px 24px 24px 10px;
 }
 
+/* Labels que no están en el diseño (borralos del JSX si querés) */
 .tarjetap-titulo span,
 .tarjetap-desc span,
 .tarjetap-fecha span {
+    display: none;
+}
+
+/* Cabecera de la organización */
+.tarjetaP-Organizacion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tarjetaP-logo {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    object-fit: cover;
+    object-position: center;
     display: block;
-    margin-bottom: 5px;
-    color: #4a4a4a;
-    font-size: 12px;
-    font-weight: 600;
+    background: #111;
+}
+
+.tarjetaP-orgNombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Título con línea debajo */
+.tarjetap-titulo {
+    margin: 14px 0 0 10px;
 }
 
 .tarjetap-titulo h3 {
     margin: 0;
-    font-size: clamp(20px, 2vw, 25px);
-    font-weight: 750;
-    line-height: 1.15;
-    overflow-wrap: anywhere;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #000;
 }
 
 .tarjetap-titulo h3::after {
-    display: block;
-    width: 48px;
-    margin-top: 10px;
-    border-bottom: 1px solid #222;
     content: "";
+    display: block;
+    width: 57px;
+    height: 1px;
+    margin-top: 14px;
+    background: #000;
 }
 
-.tarjetap-desc h3,
-.tarjetap-fecha h3 {
+/* Descripción (es un h3, lo estilo como texto de párrafo) */
+.tarjetap-desc {
+    margin: 16px 0 0 10px;
+}
+
+.tarjetap-desc h3 {
     margin: 0;
-    color: #111;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 700;
     line-height: 1.35;
-    overflow-wrap: anywhere;
+    color: #000;
 }
 
+/* Fecha (también h3, discreta y pegada abajo) */
 .tarjetap-fecha {
-    margin-top: auto;
+    margin: auto 0 0 10px;
+    padding-top: 16px;
 }
 
+.tarjetap-fecha h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #777;
+}
+
+/* Mobile */
 @media (max-width: 700px) {
-    [class="tarjeta.publicacion"] {
+    .tarjeta-publicacion {
         grid-template-columns: 1fr;
-        min-height: 0;
-        border-radius: 0 0 20px 20px;
+        border-radius: 24px;
     }
 
     .tarjetaP-imagen {
-        height: auto;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 16 / 10;
     }
 
     .tarjetaP-info {
-        gap: 14px;
-        padding: 18px;
+        padding: 16px;
     }
+
+    .tarjetap-titulo,
+    .tarjetap-desc,
+    .tarjetap-fecha {
+        margin-left: 0;
+    }
+}
+
+.tarjetaP-Organizacion + .tarjetap-titulo {
+    margin-top: 32px;
 }
