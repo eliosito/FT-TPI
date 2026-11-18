@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "./ProximosEventos.css";
+import "./CarrouselEventos.css";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -16,7 +16,7 @@ function CarruselEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                setEventos(await traerEventos({ orden: "viejo", limite: 5 }));
+                setEventos(await traerEventos({ orden: "viejo", limite: 10 }));
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
             }
@@ -27,7 +27,7 @@ function CarruselEventos() {
     return (
         <section className="eventos">
             <div className="seccion-header">
-                <h2>Eventos Destacados</h2>
+                <h2>Eventos</h2>
                 <a href="#">Ver todos</a>
             </div>
 
@@ -41,9 +41,8 @@ function CarruselEventos() {
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 4000, disableOnInteraction: false }}
                 breakpoints={{
-                    640: { slidesPerView: 3 },
-                    1024: { slidesPerView: 4 },
-                    1280: { slidesPerView: 5 },
+
+                    1280: { slidesPerView: 4 },
                 }}
             >
                 {eventos.map((evento) => (

@@ -1,5 +1,5 @@
 import "./ProximosEventos.css";
-import TarjetaEvento from "../components/TarjetaEvento";
+import TarjetaEvento2 from "../components/TarjetaEvento2";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../services/eventos";
 function ProximosEventos() {
@@ -9,7 +9,7 @@ function ProximosEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden:"viejo", limite: "10"});
+                const datos = await traerEventos({orden:"viejo", limite: "12"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -27,14 +27,17 @@ function ProximosEventos() {
                 <a href="#">Ver todos</a>
             </div>
 
-            <div className="eventos-grid">
+            <div className="proximos-grid">
 
                 {eventos.map((evento) => (
-                    <TarjetaEvento
+                    <TarjetaEvento2
                         key={evento.id_evento}
+                        nombre={evento.nombre}
                         imagen={evento.imagen}
                         lugar={evento.lugar}
                         fecha={evento.fecha}
+                        hora={evento.hora}
+  
                     />
                 ))}
             </div>

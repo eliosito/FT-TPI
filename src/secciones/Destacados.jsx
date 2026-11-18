@@ -1,4 +1,4 @@
-import "./ProximosEventos.css";
+import "./Destacados.css";
 import TarjetaEvento from "../components/TarjetaEvento";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../services/eventos";
@@ -27,7 +27,7 @@ function Destacados() {
                 <a href="#">Ver todos</a>
             </div>
 
-            <div className="eventos-grid">
+            <div className="destacados-grid">
 
                 {eventos.map((evento) => (
                     <TarjetaEvento

@@ -13,7 +13,7 @@ export default function TarjetaEvento({ lugar, fecha, imagen }) {
 
                 <div className="tarjeta-lugar">
                     <span>Lugar</span>
-                    <h3>{lugar}</h3>
+                    <h3>📍{lugar}</h3>
                 </div>
 
                 <div className="tarjeta-fecha">
