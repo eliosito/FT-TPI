@@ -9,7 +9,7 @@ function ProximosEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden:"viejo"});
+                const datos = await traerEventos({orden:"viejo", limite: "10"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);

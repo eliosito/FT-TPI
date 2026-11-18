@@ -10,7 +10,7 @@ function UltimosEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden: "nuevo"});
+                const datos = await traerEventos({orden: "nuevo" , limite: "10"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);

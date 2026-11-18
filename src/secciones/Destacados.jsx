@@ -9,7 +9,7 @@ function Destacados() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos();
+                const datos = await traerEventos({limite : "5"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
