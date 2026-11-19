@@ -31,6 +31,7 @@ function OrgPublicaciones({idOrg}) {
                 descripcion={publicacion.descripcion}
                 imagen={publicacion.img_url}
                 fecha={publicacion.fecha_creacion}
+                
                 />
 
             ))}

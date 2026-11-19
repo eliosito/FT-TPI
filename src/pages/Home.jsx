@@ -4,6 +4,7 @@ import Destacados from '../secciones/Destacados'
 import Publicaciones from '../secciones/Publicaciones'
 import UltimosEventos from '../secciones/UltimosEventos'
 import CarruselEventos from '../secciones/CarrouselEventos'
+import CarruselPublicacion from '../secciones/CarrouselPublicaciones'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
 
       <UltimosEventos/>
 
+      <CarruselPublicacion/>
     
       <Publicaciones/>
 
