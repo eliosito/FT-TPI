@@ -1,0 +1,108 @@
+.te2 {
+    width: 100%;
+    max-width: 280px;
+    min-width: 0;
+ 
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+ 
+/* Imagen */
+.te2-imagen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+}
+ 
+.te2-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+ 
+/* Cinta "Agotado" */
+.te2-cinta {
+    position: absolute;
+    top: 22px;
+    left: -40px;
+    width: 160px;
+    padding: 6px 0;
+ 
+    background-color: #f0443a;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+ 
+    transform: rotate(-45deg);
+}
+ 
+/* Lugar y nombre */
+.te2-lugar {
+    margin: 0;
+    font-size: 12px;
+    color: #6b6f7b;
+ 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+ 
+    filter: grayscale(1); /* deja el 📍 en gris */
+}
+ 
+.te2-nombre {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #111;
+ 
+    /* 2 líneas máximo, todas las tarjetas del mismo alto */
+    min-height: 2.4em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+ 
+/* Fecha y hora */
+.te2-fecha {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    color: #6b6f7b;
+}
+ 
+.te2-bloque {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+ 
+.te2-numero {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1;
+}
+ 
+.te2-detalle {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.05;
+}
+ 
+.te2-separador {
+    width: 1px;
+    align-self: stretch;
+    background-color: #cfd2da;
+}

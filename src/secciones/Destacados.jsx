@@ -1,4 +1,4 @@
-import "./ProximosEventos.css";
+import "./Destacados.css";
 import TarjetaEvento from "../components/TarjetaEvento";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../services/eventos";
@@ -9,7 +9,7 @@ function Destacados() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos();
+                const datos = await traerEventos({limite : "5"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -27,7 +27,7 @@ function Destacados() {
                 <a href="#">Ver todos</a>
             </div>
 
-            <div className="eventos-grid">
+            <div className="destacados-grid">
 
                 {eventos.map((evento) => (
                     <TarjetaEvento

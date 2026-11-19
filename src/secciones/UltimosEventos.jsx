@@ -1,4 +1,4 @@
-import "./ProximosEventos.css";
+import "./UltimosEventos.css";
 import TarjetaEvento from "../components/TarjetaEvento";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../services/eventos";
@@ -10,7 +10,7 @@ function UltimosEventos() {
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden: "nuevo"});
+                const datos = await traerEventos({orden: "nuevo" , limite: "8"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -24,7 +24,7 @@ function UltimosEventos() {
         <section className="eventos">
 
             <div className="seccion-header">
-                <h2>¡Ultimos eventos!+</h2>
+                <h2>¡Ultimos eventos!</h2>
                 <a href="#">Ver todos</a>
             </div>
 
