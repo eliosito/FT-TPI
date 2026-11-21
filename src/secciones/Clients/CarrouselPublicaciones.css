@@ -1,0 +1,57 @@
+.publicaciones {
+    width: 100%;
+    padding: 30px 4%;
+}
+
+.seccion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.seccion-header h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.seccion-header a {
+    text-decoration: none;
+    color: #3A7E8D;
+}
+
+.carrousel-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+}
+
+/* ---- Swiper de publicaciones ---- */
+
+/* Espacio para que no se corte la sombra de las tarjetas
+   y para que los puntitos de paginación no tapen nada */
+.publicaciones .swiper {
+    padding: 6px 6px 44px;
+}
+
+/* El slide ocupa solo lo que mide la tarjeta (alto fijo) */
+.publicaciones .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.publicaciones .swiper-slide > .tarjeta-publicacion {
+    width: 100%;
+}
+
+/* Flechas más discretas, sobre los costados */
+.publicaciones .swiper-button-prev,
+.publicaciones .swiper-button-next {
+    color: #3A7E8D;
+    transform: scale(0.7);
+}
+
+.publicaciones .swiper-pagination-bullet-active {
+    background: #3A7E8D;
+}
