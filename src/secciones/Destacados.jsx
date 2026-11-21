@@ -1,7 +1,7 @@
 import "./Destacados.css";
-import TarjetaEvento from "../components/TarjetaEvento";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../services/eventos";
+import ImagenEvento from "../components/ImagenEvento";
 function Destacados() {
     const [eventos, setEventos] = useState([]);
     const [error, setError] = useState(null)
@@ -30,7 +30,7 @@ function Destacados() {
             <div className="destacados-grid">
 
                 {eventos.map((evento) => (
-                    <TarjetaEvento
+                    <ImagenEvento
                         key={evento.id_evento}
                         imagen={evento.imagen}
                         lugar={evento.lugar}
