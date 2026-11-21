@@ -7,8 +7,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { traerEventos } from "../services/eventos";
-import TarjetaEvento from "../components/TarjetaEvento";
+import { traerEventos } from "../../services/eventos";
+import TarjetaEvento from "../../components/Clients/Tarjetas/TarjetaEvento";
 
 function CarruselEventos() {
     const [eventos, setEventos] = useState([]);

@@ -1,16 +1,15 @@
-import "./UltimosEventos.css";
-import TarjetaEvento from "../components/TarjetaEvento";
+import "./Destacados.css";
 import { useState, useEffect } from "react";
-import { traerEventos } from "../services/eventos";
-
-function UltimosEventos() {
+import { traerEventos } from "../../services/eventos";
+import ImagenEvento from "../../components/Clients/Tarjetas/ImagenEvento";
+function Destacados() {
     const [eventos, setEventos] = useState([]);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null)
     
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden: "nuevo" , limite: "8"});
+                const datos = await traerEventos({limite : "5"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -18,21 +17,20 @@ function UltimosEventos() {
             }
         }
         cargar();
-    }, []);
+    },[])
 
     return (
         <section className="eventos">
 
             <div className="seccion-header">
-                <h2>¡Ultimos eventos!</h2>
+                <h2>Eventos Destacados</h2>
                 <a href="#">Ver todos</a>
             </div>
 
-            {error && <p className="error-mensaje">{error}</p>}
+            <div className="destacados-grid">
 
-            <div className="eventos-grid">
                 {eventos.map((evento) => (
-                    <TarjetaEvento
+                    <ImagenEvento
                         key={evento.id_evento}
                         imagen={evento.imagen}
                         lugar={evento.lugar}
@@ -45,4 +43,4 @@ function UltimosEventos() {
     );
 }
 
-export default UltimosEventos;
+export default Destacados;

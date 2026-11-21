@@ -1,7 +1,7 @@
 import "./Publicaciones.css";
-import TarjetaPublicacion from "../components/TarjetaPublicacion";
+import TarjetaPublicacion from "../../components/Clients/Tarjetas/TarjetaPublicacion";
 import { useState, useEffect } from "react";
-import { traerPublicaciones } from "../services/publicaciones";
+import { traerPublicaciones } from "../../services/publicaciones";
 function Publicaciones() {
     const [publicacions, setPublicacion] = useState([])
     const [error, setError] = useState(null)

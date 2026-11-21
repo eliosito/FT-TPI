@@ -1,7 +1,7 @@
 import "../ProximosEventos.css"
-import TarjetaEvento from "../../components/TarjetaEvento";
+import TarjetaEvento from "../../../components/Clients/Tarjetas/TarjetaEvento";
 import { useState, useEffect } from "react";
-import { traerEventosOrg } from "../../services/eventosOrg";
+import { traerEventosOrg } from "../../../services/eventosOrg";
 
 function OrgUltimosEventos({ idOrg }) {
     const [eventos, setEventos] = useState([]);

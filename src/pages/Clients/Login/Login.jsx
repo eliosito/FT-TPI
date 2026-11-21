@@ -1,6 +1,6 @@
 import { useLocation, Link } from "wouter";
 import { useState } from "react";
-import api from "../../api.js"
+import api from "../../../api.js"
 import "./Login.css";
 
 function Login() {

@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { Route, Switch } from "wouter";
 import './App.css'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import Home from './pages/Home'
-import Publicaciones from './pages/Publicaciones';
-import Rastro from './pages/Rastro';
-import PerfilOrganizacion from './pages/PerfilOrganizacion/PerfilOrganizacion';
-import Header from './components/Header';
+import Login from './pages/Clients/Login/Login'
+import Register from './pages/Clients/Register/Register'
+import Home from './pages/Clients/Home'
+import Publicaciones from './pages/Clients/Publicaciones';
+import Rastro from './pages/Clients/Rastro';
+import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganizacion';
+
 import PublicLayout from './layouts/PublicLayout';
-import NoEncontrada from './pages/NoEncontrada';
+import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
 import RutaProtegida from './components/RutaProtegida';
 import RutaPublica from './components/RutaPublica';

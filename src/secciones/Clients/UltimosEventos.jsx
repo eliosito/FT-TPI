@@ -1,15 +1,16 @@
-import "./ProximosEventos.css";
-import TarjetaEvento2 from "../components/TarjetaEvento2";
+import "./UltimosEventos.css";
+import TarjetaEvento from "../../components/Clients/Tarjetas/TarjetaEvento";
 import { useState, useEffect } from "react";
-import { traerEventos } from "../services/eventos";
-function ProximosEventos() {
-    const [eventos, setEventos] = useState([]);
-    const [error, setError] = useState(null)
+import { traerEventos } from "../../services/eventos";
 
+function UltimosEventos() {
+    const [eventos, setEventos] = useState([]);
+    const [error, setError] = useState(null);
+    
     useEffect(() => {
         async function cargar() {
             try {
-                const datos = await traerEventos({orden:"viejo", limite: "12"});
+                const datos = await traerEventos({orden: "nuevo" , limite: "8"});
                 setEventos(datos);
             } catch (err) {
                 console.error(err.response?.status, err.response?.data);
@@ -17,27 +18,25 @@ function ProximosEventos() {
             }
         }
         cargar();
-    }, [])
+    }, []);
 
     return (
         <section className="eventos">
 
             <div className="seccion-header">
-                <h2>Explora los próximos eventos</h2>
+                <h2>¡Ultimos eventos!</h2>
                 <a href="#">Ver todos</a>
             </div>
 
-            <div className="proximos-grid">
+            {error && <p className="error-mensaje">{error}</p>}
 
+            <div className="eventos-grid">
                 {eventos.map((evento) => (
-                    <TarjetaEvento2
+                    <TarjetaEvento
                         key={evento.id_evento}
-                        nombre={evento.nombre}
                         imagen={evento.imagen}
                         lugar={evento.lugar}
                         fecha={evento.fecha}
-                        hora={evento.hora}
-  
                     />
                 ))}
             </div>
@@ -46,4 +45,4 @@ function ProximosEventos() {
     );
 }
 
-export default ProximosEventos;
+export default UltimosEventos;

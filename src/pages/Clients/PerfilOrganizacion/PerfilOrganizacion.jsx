@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'wouter';
-import api from "../../api.js";
-import OrgUltimosEventos from '../../secciones/Perfiles/OrgUltimosEventos.jsx';
-import OrgPublicaciones from '../../secciones/Perfiles/OrgPublicaciones.jsx';
+import api from "../../../api.js";
+import OrgUltimosEventos from '../../../secciones/Clients/Perfiles/OrgUltimosEventos.jsx';
+import OrgPublicaciones from '../../../secciones/Clients/Perfiles/OrgPublicaciones.jsx';
 import "./PerfilOrganizacion.css";
 
 export default function PerfilOrganizacion() {
