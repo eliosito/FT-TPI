@@ -14,7 +14,7 @@ export default function TarjetaPublicacion({ titulo, descripcion, imagen, fecha,
 
                 {nombreOrganizacion && (
                     <Link
-                        href={`/organizacion/${organizador_id}`}
+                        href={`/publico/organizacion/${organizador_id}`}
                         className="tarjetaP-Organizacion"
                     >
                         <img className="tarjetaP-logo" src={fotoOrganizacion} alt="" />

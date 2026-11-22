@@ -115,7 +115,7 @@ const handleSubmit = async (e) => {
               />
 
               {errores.password && <span className="error">{errores.password}</span>}
-3000
+
             </div>
               {errores.general && <span className="error">{errores.general}</span>}
 
@@ -134,10 +134,14 @@ const handleSubmit = async (e) => {
             <button type="submit" className="login-button">
               Entrar <span>→</span>
             </button>
+            
+            <Link to='/' className="guest-button">
+              Continuar como invitado 
+            </Link>
 
             <p className="register-text">
               ¿Todavía no tenés cuenta?{" "}
-              <Link to='/register'>Creala acá</Link>
+              <Link to='/publico/register'>Creala acá</Link>
 
             </p>
 

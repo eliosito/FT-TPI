@@ -139,6 +139,8 @@
   transition: background-color 0.2s, transform 0.2s;
 }
 
+
+
 .login-button:hover {
   background-color: #707070;
   transform: translateY(-1px);
@@ -266,4 +268,21 @@
   color: #e74c3c;
   font-size: 0.85rem;
   margin-top: 0.3rem;
+}
+
+.guest-button {
+  width: 100%;
+  height: 52px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 8px;
+  background-color: #C96969;
+  color: #292929;
+  font-size: 21px;
+  font-weight: 750;
+  cursor: pointer;
+  align-content: center;
+   text-align: center;
+  box-shadow: 0 3px 4px #00000035;
+  transition: background-color 0.2s, transform 0.2s;
 }

@@ -7,7 +7,7 @@ import Home from './pages/Clients/Home'
 import Publicaciones from './pages/Clients/Publicaciones';
 import Rastro from './pages/Clients/Rastro';
 import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganizacion';
-
+import { Redirect } from 'wouter';
 import PublicLayout from './layouts/PublicLayout';
 import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
@@ -19,54 +19,59 @@ function App() {
 
   return (
     <>
-
       <Switch>
-        <Route path="/">
+                <Route path="/">
+        <Redirect to="/publico/" />
+      </Route>
+
+
+        {/* RUTAS PÚBLICAS */}
+
+        <Route path="/publico/">
           <PublicLayout>
             <Home />
           </PublicLayout>
         </Route>
 
-        <Route path="/publicaciones">
+        <Route path="/publico/publicaciones">
           <PublicLayout>
             <Publicaciones />
           </PublicLayout>
         </Route>
 
-        <Route path="/rastro">
+        <Route path="/publico/rastro">
           <RutaProtegida roles={["admin"]}>
             <PublicLayout>
               <Rastro />
             </PublicLayout>
           </RutaProtegida>
-
         </Route>
 
-
-        <Route path="/login">
+        <Route path="/publico/login">
           <RutaPublica>
             <AuthLayout>
               <Login />
             </AuthLayout>
           </RutaPublica>
-
         </Route>
 
-        <Route path="/register">
+        <Route path="/publico/register">
           <RutaPublica>
             <AuthLayout>
               <Register />
             </AuthLayout>
-
           </RutaPublica>
-
         </Route>
 
-        <Route path="/organizacion/:id">
+          <Route path="/publico/organizacion/:id">
           <PublicLayout>
             <PerfilOrganizacion />
           </PublicLayout>
         </Route>
+
+
+
+
 
         <Route>
           <NoEncontrada />

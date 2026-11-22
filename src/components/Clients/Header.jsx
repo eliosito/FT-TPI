@@ -14,7 +14,7 @@ function Header() {
     
     function CerrarSesion  () {   
         localStorage.removeItem("token")
-        navigate("/login")
+        navigate("/publico/login")
         
 
     }
@@ -29,8 +29,8 @@ function Header() {
 
                 <nav className="header-nav">
                     <Link href="/">Home</Link>
-                    <Link href="/publicaciones">Publicaciones</Link>
-                    <Link href="/rastro">Mi rastro</Link>
+                    <Link href="/publico/publicaciones">Publicaciones</Link>
+                    <Link href="/publico/rastro">Mi rastro</Link>
                     <button onClick={CerrarSesion} > Cerrar Sesion</button>
                 </nav>
 
