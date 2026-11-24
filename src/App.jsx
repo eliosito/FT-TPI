@@ -13,6 +13,7 @@ import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
 import RutaProtegida from './components/RutaProtegida';
 import RutaPublica from './components/RutaPublica';
+import LoginClub from './pages-Club/Login/Login';
 
 function App() {
 
@@ -73,10 +74,34 @@ function App() {
 
 
 
+
+
+
+
+
+
+        <Route path="/privado/login">
+          <RutaPublica>
+            <AuthLayout>
+              <LoginClub />
+            </AuthLayout>
+          </RutaPublica>
+        </Route>
+
+
+
+
+
+
+
+
+
+
+
+
         <Route>
           <NoEncontrada />
         </Route>
-
 
       </Switch>
     </>
