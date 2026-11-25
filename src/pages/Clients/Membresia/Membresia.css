@@ -1,0 +1,153 @@
+.membresia-container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 4%;
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Plan */
+.membresia-plan h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    font-weight: 700;
+    color: #111;
+}
+
+.membresia-subtitulo {
+    margin: 0 0 24px;
+    color: #6b6f7b;
+}
+
+.membresia-precio {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.membresia-monto {
+    font-size: 44px;
+    font-weight: 700;
+    color: #3A7E8D;
+}
+
+.membresia-periodo {
+    color: #6b6f7b;
+}
+
+.membresia-beneficios {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.membresia-beneficios li {
+    padding-left: 28px;
+    position: relative;
+    color: #222;
+}
+
+.membresia-beneficios li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #3A7E8D;
+    font-weight: 700;
+}
+
+/* Pago */
+.membresia-pago {
+    padding: 28px;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.membresia-pago h2 {
+    margin: 0 0 20px;
+    font-size: 20px;
+}
+
+.membresia-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.membresia-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.membresia-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.membresia-campo label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+.membresia-campo input {
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #c8cbd2;
+    border-radius: 10px;
+}
+
+.membresia-campo input:focus {
+    outline: 2px solid #3A7E8D;
+    border-color: transparent;
+}
+
+.membresia-error {
+    font-size: 12px;
+    color: #d93025;
+}
+
+.membresia-boton {
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #3A7E8D;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.membresia-boton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.membresia-aviso {
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+    color: #6b6f7b;
+}
+
+/* Celular */
+@media (max-width: 800px) {
+    .membresia-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}

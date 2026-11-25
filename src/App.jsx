@@ -13,6 +13,7 @@ import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
 import RutaProtegida from './components/RutaProtegida';
 import RutaPublica from './components/RutaPublica';
+import Membresia from './pages/Clients/Membresia/Membresia';
 
 function App() {
 
@@ -20,9 +21,9 @@ function App() {
   return (
     <>
       <Switch>
-                <Route path="/">
-        <Redirect to="/publico/" />
-      </Route>
+        <Route path="/">
+          <Redirect to="/publico/" />
+        </Route>
 
 
         {/* RUTAS PÚBLICAS */}
@@ -63,10 +64,16 @@ function App() {
           </RutaPublica>
         </Route>
 
-          <Route path="/publico/organizacion/:id">
+        <Route path="/publico/organizacion/:id">
           <PublicLayout>
             <PerfilOrganizacion />
           </PublicLayout>
+        </Route>
+
+        <Route path="/publico/membresia">
+          <RutaProtegida>
+          <Membresia/>
+          </RutaProtegida>
         </Route>
 
 
