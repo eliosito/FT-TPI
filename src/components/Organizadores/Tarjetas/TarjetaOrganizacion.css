@@ -1,0 +1,77 @@
+/* ===== Tarjeta ===== */
+.tarjeta-org2 {
+  width: 100%;
+  max-width: 280px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  background: #141418;
+  border: 1px solid #25262c;
+  border-radius: 22px;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #ffffff;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.tarjeta-org2 *,
+.tarjeta-org2 *::before,
+.tarjeta-org2 *::after {
+  box-sizing: border-box;
+}
+
+.tarjeta-org2:hover {
+  border-color: #3a3d45;
+  transform: translateY(-2px);
+}
+
+/* ===== Foto (cuadrada) ===== */
+.tarjeta-portada2 {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #1c1f24;
+  border-radius: 12px;
+}
+
+.tarjeta-portada2 img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== Info ===== */
+.tarjeta-info2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0 4px 4px;
+  text-align: left;
+}
+
+.tarjeta-nombre2,
+.tarjeta-ubi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.tarjeta-info2 span {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a8e97;
+}
+
+.tarjeta-info2 h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}

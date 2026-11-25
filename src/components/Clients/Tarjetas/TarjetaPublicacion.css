@@ -1,0 +1,222 @@
+/* El slide del carrusel es el "contenedor": la tarjeta ajusta tamaños
+   según el ancho que tiene el slide, no según el ancho de la pantalla. */
+.slide-publicacion {
+    container: slide / inline-size;
+}
+
+.tarjeta-publicacion {
+    /* Cambiá solo este valor para ajustar la altura */
+    --alto-tarjeta: 600px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);  /* imagen siempre a la izquierda */
+    grid-template-rows: minmax(0, 1fr);   /* la fila no crece por el contenido */
+    width: 100%;
+    max-width: 1000px;                    /* antes 880px: más ancha */
+    height: var(--alto-tarjeta);          /* alto fijo: todas las tarjetas iguales */
+    background: #fff;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Imagen */
+.tarjetaP-imagen {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+.tarjetaP-imagen img {
+    position: absolute;                   /* llena el contenedor sí o sí */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Info */
+.tarjetaP-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    padding: 14px 24px 24px 10px;
+}
+
+/* Labels que no están en el diseño (borralos del JSX si querés) */
+.tarjetap-titulo span,
+.tarjetap-desc span,
+.tarjetap-fecha span {
+    display: none;
+}
+
+/* Cabecera de la organización */
+.tarjetaP-Organizacion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tarjetaP-logo {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    background: #111;
+}
+
+.tarjetaP-orgNombre {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Título con línea debajo (máximo 3 líneas) */
+.tarjetap-titulo {
+    margin: 14px 0 0 10px;
+}
+
+.tarjetap-titulo h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #000;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tarjetap-titulo h3::after {
+    content: "";
+    display: block;
+    width: 57px;
+    height: 1px;
+    margin-top: 14px;
+    background: #000;
+}
+
+/* Descripción (es un h3, lo estilo como texto de párrafo) */
+.tarjetap-desc {
+    margin: 16px 0 0 10px;
+}
+
+.tarjetap-desc h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #000;
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Fecha (también h3, discreta y pegada abajo) */
+.tarjetap-fecha {
+    margin: auto 0 0 10px;
+    padding-top: 16px;
+}
+
+.tarjetap-fecha h3 {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #777;
+}
+
+.tarjetaP-Organizacion + .tarjetap-titulo {
+    margin-top: 32px;
+}
+
+/* Tarjeta media: la imagen sigue a la izquierda, solo se achican los textos */
+@container slide (max-width: 700px) {
+    .tarjeta-publicacion {
+        border-radius: 26px;
+    }
+
+    .tarjetaP-info {
+        padding: 14px 18px 18px 10px;
+    }
+
+    .tarjetaP-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+    }
+
+    .tarjetaP-Organizacion + .tarjetap-titulo {
+        margin-top: 22px;
+    }
+
+    .tarjetap-titulo h3 {
+        font-size: 1.5rem;
+    }
+
+    .tarjetap-desc h3 {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 10;
+    }
+}
+
+/* Tarjeta angosta (celulares): imagen a la izquierda más finita, más baja */
+@container slide (max-width: 480px) {
+    .tarjeta-publicacion {
+        --alto-tarjeta: 440px;
+        grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+        border-radius: 22px;
+    }
+
+    .tarjetaP-info {
+        padding: 12px 14px 14px 8px;
+    }
+
+    .tarjetaP-logo {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+    }
+
+    .tarjetaP-orgNombre {
+        font-size: 0.95rem;
+    }
+
+    .tarjetaP-Organizacion + .tarjetap-titulo {
+        margin-top: 14px;
+    }
+
+    .tarjetap-titulo,
+    .tarjetap-desc,
+    .tarjetap-fecha {
+        margin-left: 4px;
+    }
+
+    .tarjetap-titulo h3 {
+        font-size: 1.15rem;
+        -webkit-line-clamp: 3;
+    }
+
+    .tarjetap-titulo h3::after {
+        margin-top: 8px;
+    }
+
+    .tarjetap-desc {
+        margin-top: 10px;
+    }
+
+    .tarjetap-desc h3 {
+        font-size: 0.82rem;
+        -webkit-line-clamp: 8;
+    }
+}

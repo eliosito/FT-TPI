@@ -1,0 +1,64 @@
+
+.tarjeta-evento {
+    width: 100%;
+    min-width: 0;
+    padding: 5px;
+
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    overflow: hidden;
+}
+
+/* Imagen */
+.tarjeta-imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 9px;
+}
+
+.tarjeta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Información */
+.tarjeta-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 2px 3px;
+}
+
+.tarjeta-lugar,
+.tarjeta-fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.tarjeta-info span {
+    font-size: 11px;
+    color: #555;
+}
+
+.tarjeta-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.tarjeta-fecha {
+    text-align: right;
+}
