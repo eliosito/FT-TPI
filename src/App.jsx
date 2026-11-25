@@ -94,7 +94,6 @@ function App() {
 
 
         <Route path="/privado/login">
-
           <RutaPublicaClub>
             <AuthLayout>
               <LoginClub/>
@@ -103,11 +102,11 @@ function App() {
         </Route>
 
         <Route path="/privado/">
-          <RutaProtegidaClub roles={["admin"]}>
+          <RutaProtegida soloSocios>
             <PublicLayoutClub>
               <HomeClub />
             </PublicLayoutClub>
-          </RutaProtegidaClub>
+          </RutaProtegida>
         </Route>
 
 

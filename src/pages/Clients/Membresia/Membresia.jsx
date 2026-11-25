@@ -74,9 +74,9 @@ function Membresia() {
         try {
 
             await new Promise((resolver) => setTimeout(resolver, 1500));
-
-            await comprarMembresia();
-
+            
+            const datos = await comprarMembresia();
+            localStorage.setItem("token", datos.token)
             navigate("/public/crear-organizacion", { replace: true });
         } catch (error) {
             console.error(error.response?.status, error.response?.data);
