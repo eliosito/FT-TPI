@@ -1,4 +1,4 @@
-.wick-header {
+.wick-header2 {
     width: 100%;
     height: 46px;
     background-color: #141418;
@@ -8,7 +8,7 @@
     align-items: center;
 }
 
-.header-container {
+.header-container2 {
     width: 96%;
     margin: 0 auto;
 
@@ -18,7 +18,7 @@
 }
 
 /* Logo a la izquierda */
-.header-logo {
+.header-logo2 {
     justify-self: start;
 
     font-size: 18px;
@@ -28,32 +28,32 @@
 }
 
 /* Secciones centradas */
-.header-nav {
+.header-nav2 {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
 }
 
-.header-nav a {
+.header-nav2 a {
     text-decoration: none;
     color: #ffffff;
     font-size: 15px;
     font-weight: 600;
 }
 
-.header-nav a:hover {
+.header-nav2 a:hover {
     color: #8a8e97;
 }
 
-.header-icons {
+.header-icons2 {
     justify-self: end;
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-.header-icons svg {
+.header-icons2 svg {
     color: #ffffff;
     font-size: 18px;
 }

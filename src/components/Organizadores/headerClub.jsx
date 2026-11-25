@@ -19,20 +19,20 @@ function HeaderClub() {
 
     }
     return (
-        <header className="wick-header">
-            <div className="header-container">
+        <header className="wick-header2">
+            <div className="header-container2">
 
 
-                <div className="header-logo">
+                <div className="header-logo2">
                     WickClub
                 </div>
 
-                <nav className="header-nav">
+                <nav className="header-nav2">
                     <Link href="/privado/">Home</Link>
                     <button onClick={CerrarSesion} > Cerrar Sesion</button>
                 </nav>
 
-                <div className="header-icons">
+                <div className="header-icons2">
                     <LuShoppingCart />
 
 

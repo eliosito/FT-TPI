@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderClub from '../components/Club/headerClub'
+import HeaderClub from '../components/Organizadores/headerClub'
 function PublicLayoutClub({ children }) {
   return (
     <>

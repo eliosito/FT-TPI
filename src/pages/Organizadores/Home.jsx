@@ -1,5 +1,5 @@
 import React from 'react'
-import OrganizacionesHome from '../secciones-Club/OrgHome'
+import OrganizacionesHome from '../../secciones/Organizadores/OrgHome'
 
 
 export default function HomeClub() {

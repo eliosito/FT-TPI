@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { Route, Switch } from "wouter";
 import './App.css'
 import Login from './pages/Clients/Login/Login'
-import LoginClub from './pages-Club/Login/LoginClub';
 import Register from './pages/Clients/Register/Register'
 import Home from './pages/Clients/Home'
-import HomeClub from './pages-Club/Home';
+import HomeClub from './pages/Organizadores/Home';
 import Publicaciones from './pages/Clients/Publicaciones';
 import Rastro from './pages/Clients/Rastro';
 import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganizacion';
@@ -21,6 +20,7 @@ import RutaPublica from './components/RutaPublica';
 import RutaProtegidaClub from './components/RutaProtegidaClub';
 import RutaPublicaClub from './components/RutaPublicaClub';
 import Membresia from './pages/Clients/Membresia/Membresia';
+import LoginClub from './pages/Organizadores/Login/LoginClub';
 
 function App() {
 
@@ -97,7 +97,7 @@ function App() {
 
           <RutaPublicaClub>
             <AuthLayout>
-              <LoginClub />
+              <LoginClub/>
             </AuthLayout>
           </RutaPublicaClub>
         </Route>

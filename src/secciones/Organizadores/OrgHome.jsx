@@ -1,7 +1,7 @@
 import "./OrgHome.css";
-import TarjetaOrganizacion from "../components/Club/Tarjetas/TarjetaOrganizacion";
+import TarjetaOrganizacion from "../../components/Organizadores/Tarjetas/TarjetaOrganizacion";
 import { useState, useEffect } from "react";
-import { traerMisOrgs } from "../services/organizaciones";
+import { traerMisOrgs } from "../../services/organizaciones";
 function OrganizacionesHome() {
     const [organizaciones, setOrganizaciones] = useState([])
     const [error, setError] = useState(null)
