@@ -1,7 +1,7 @@
 import { useLocation } from "wouter";
 import { useState } from "react";
 import api from "../../api.js";
-import "./Login.css";
+import "./LoginClub.css";
 
 function LoginClub() {
   async function login(email, contrasena) {
@@ -64,14 +64,14 @@ function LoginClub() {
   };
 
   return (
-    <main className="login-container">
-      <section className="login-card">
-        <header className="login-header">
+    <main className="lc-container">
+      <section className="lc-card">
+        <header className="lc-header">
           <h1>WickClub</h1>
         </header>
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+        <form className="lc-form" onSubmit={handleSubmit}>
+          <div className="lc-group">
             <label htmlFor="email">Correo</label>
             <input
               id="email"
@@ -80,10 +80,10 @@ function LoginClub() {
               onChange={handleChange}
               value={form.email}
             />
-            {errores.email && <span className="error">{errores.email}</span>}
+            {errores.email && <span className="lc-error">{errores.email}</span>}
           </div>
 
-          <div className="form-group">
+          <div className="lc-group">
             <label htmlFor="password">Contraseña</label>
             <input
               id="password"
@@ -93,21 +93,21 @@ function LoginClub() {
               value={form.password}
             />
             {errores.password && (
-              <span className="error">{errores.password}</span>
+              <span className="lc-error">{errores.password}</span>
             )}
           </div>
 
           {/* Caja "No soy un Robot" (solo visual) */}
-          <div className="captcha-box">
-            <label className="captcha-check">
+          <div className="lc-captcha-box">
+            <label className="lc-captcha-check">
               <input type="checkbox" />
               No soy un Robot
             </label>
           </div>
 
-          {errores.general && <span className="error">{errores.general}</span>}
+          {errores.general && <span className="lc-error">{errores.general}</span>}
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="lc-button">
             Acceder
           </button>
         </form>

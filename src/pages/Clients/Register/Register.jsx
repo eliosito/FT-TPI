@@ -178,7 +178,7 @@ function Register() {
 
             <p className="register-text">
               ¿Ya tenés cuenta?{" "}
-              <Link to='/login'>Inicía sesion acá</Link>
+              <Link to='/publico/login'>Inicía sesion acá</Link>
             </p>
 
           </form>

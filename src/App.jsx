@@ -2,18 +2,24 @@ import { useState } from 'react'
 import { Route, Switch } from "wouter";
 import './App.css'
 import Login from './pages/Clients/Login/Login'
+import LoginClub from './pages-Club/Login/LoginClub';
 import Register from './pages/Clients/Register/Register'
 import Home from './pages/Clients/Home'
+import HomeClub from './pages-Club/Home';
 import Publicaciones from './pages/Clients/Publicaciones';
 import Rastro from './pages/Clients/Rastro';
 import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganizacion';
 import { Redirect } from 'wouter';
 import PublicLayout from './layouts/PublicLayout';
+import PublicLayoutClub from './layouts/PublicLayoutClub';
 import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
+
+
 import RutaProtegida from './components/RutaProtegida';
 import RutaPublica from './components/RutaPublica';
-import LoginClub from './pages-Club/Login/Login';
+import RutaProtegidaClub from './components/RutaProtegidaClub';
+import RutaPublicaClub from './components/RutaPublicaClub';
 
 function App() {
 
@@ -81,14 +87,21 @@ function App() {
 
 
         <Route path="/privado/login">
-          <RutaPublica>
+
+          <RutaPublicaClub>
             <AuthLayout>
               <LoginClub />
             </AuthLayout>
-          </RutaPublica>
+          </RutaPublicaClub>
         </Route>
 
-
+        <Route path="/privado/">
+          <RutaProtegidaClub roles={["admin"]}>
+            <PublicLayoutClub>
+              <HomeClub />
+            </PublicLayoutClub>
+          </RutaProtegidaClub>
+        </Route>
 
 
 
