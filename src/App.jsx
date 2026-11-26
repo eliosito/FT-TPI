@@ -10,9 +10,10 @@ import Rastro from './pages/Clients/Rastro';
 import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganizacion';
 import { Redirect } from 'wouter';
 import PublicLayout from './layouts/PublicLayout';
-import PublicLayoutClub from './layouts/PublicLayoutClub';
+import PrivateLayout from './layouts/PrivateLayout';
 import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
+import PerfilOrganizacionClub from './pages/Organizadores/OrganizacionPage/OrganizacionPage';
 
 
 import RutaProtegida from './components/RutaProtegida';
@@ -79,7 +80,9 @@ function App() {
 
         <Route path="/publico/membresia">
           <RutaProtegida>
+            <PublicLayout>  
           <Membresia/>
+          </PublicLayout>
           </RutaProtegida>
         </Route>
 
@@ -102,14 +105,18 @@ function App() {
         </Route>
 
         <Route path="/privado/">
-          <RutaProtegida soloSocios>
-            <PublicLayoutClub>
+          <RutaProtegidaClub soloSocios>
+            <PrivateLayout>
               <HomeClub />
-            </PublicLayoutClub>
-          </RutaProtegida>
+            </PrivateLayout>
+          </RutaProtegidaClub>
         </Route>
 
-
+        <Route path="/privado/organizacion/:id">
+          <PrivateLayout>
+            <PerfilOrganizacionClub />
+          </PrivateLayout>
+        </Route>
 
 
 

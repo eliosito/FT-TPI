@@ -9,8 +9,12 @@ import { IoSearch } from "react-icons/io5";
 
 import { useLocation } from "wouter";
 
+import { getUsuario } from "../../auth";
+
+
 function HeaderClub() {
     const [, navigate] = useLocation()
+    const usuario = getUsuario();
     
     function CerrarSesion  () {   
         localStorage.removeItem("token")
@@ -38,6 +42,7 @@ function HeaderClub() {
 
 
                     <IoSearch />
+                    {usuario && <span>Bienvenido {usuario.nombre}</span>}
                     <FaRegUserCircle />
 
 

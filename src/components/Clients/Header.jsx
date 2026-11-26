@@ -9,13 +9,16 @@ import { IoSearch } from "react-icons/io5";
 
 import { useLocation } from "wouter";
 
+import { getUsuario } from "../../auth";
+
 function Header() {
     const [, navigate] = useLocation()
-    
-    function CerrarSesion  () {   
+    const usuario = getUsuario();
+
+    function CerrarSesion() {
         localStorage.removeItem("token")
         navigate("/publico/login")
-        
+
 
     }
     return (
@@ -31,7 +34,15 @@ function Header() {
                     <Link href="/">Home</Link>
                     <Link href="/publico/publicaciones">Publicaciones</Link>
                     <Link href="/publico/rastro">Mi rastro</Link>
-                    <button onClick={CerrarSesion} > Cerrar Sesion</button>
+
+                    {usuario ? (
+                        <button onClick={CerrarSesion} > Cerrar Sesion</button>
+
+                    ) : (
+                        <button onClick={CerrarSesion} > Iniciar sesion</button>
+                    )}
+
+
                 </nav>
 
                 <div className="header-icons">
@@ -40,6 +51,8 @@ function Header() {
 
 
                     <IoSearch />
+
+                    {usuario && <span>Bienvenido {usuario.nombre}</span>}
                     <FaRegUserCircle />
 
 

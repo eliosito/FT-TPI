@@ -59,7 +59,7 @@ function LoginClub() {
       setErrores({});
       navigate("/privado/", { replace: true });
     } else {
-      setErrores({ general: "Credenciales incorrectas" });
+      setErrores({ general: "Credenciales incorrectas o no cuenta con los permisos" });
     }
   };
 

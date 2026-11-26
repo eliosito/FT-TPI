@@ -32,6 +32,7 @@ function OrganizacionesHome() {
                 {organizaciones.map((organizacion) => (
                     <TarjetaOrganizacion
                         key={organizacion.id_org}
+                        id={organizacion.id_org}
                         nombre={organizacion.nombre}
                         ubicacion={organizacion.ubicacion}
                         portada={organizacion.portada}
