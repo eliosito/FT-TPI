@@ -6,3 +6,14 @@ export async function traerMisOrgs() {
   return respuesta.data;
   
 }
+
+export async function traerMisOrgs2() {
+  const respuesta = await api.get(`/org/mias`);
+  return respuesta.data;
+  
+}
+
+export async function traerOrgMia(id) {
+  const respuesta = await api.get(`/org/mias/${id}`);
+  return respuesta.data;
+}

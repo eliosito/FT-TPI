@@ -1,0 +1,182 @@
+.detalle {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Imagen superior */
+.detalle-imagen {
+    width: 100%;
+    aspect-ratio: 5 / 2;
+    object-fit: cover;
+    display: block;
+}
+
+.detalle-cuerpo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Fecha + título + descripción */
+.detalle-cabecera {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.detalle-fecha {
+    flex-shrink: 0;
+    width: 64px;
+    padding: 6px 0;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: 2px solid #222;
+    border-radius: 14px;
+    color: #111;
+}
+
+.detalle-fecha-dia,
+.detalle-fecha-mes {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.detalle-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.detalle-titulo {
+    margin: 0 0 10px;
+    font-size: 22px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #777;
+}
+
+.detalle-nombre {
+    font-weight: 600;
+    color: #66ADA5;
+}
+
+.detalle-lugar {
+    font-weight: 700;
+    color: #111;
+}
+
+.detalle-descripcion-titulo {
+    margin: 0 0 4px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+}
+
+.detalle-descripcion {
+    min-height: 24px;
+    font-size: 14px;
+    color: #444;
+}
+
+/* Entradas */
+.detalle-entradas-titulo {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: #66ADA5;
+}
+
+.detalle-entradas {
+    border: 1.5px solid #2b2b2b;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.detalle-entradas-encabezado,
+.detalle-entrada-fila {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    align-items: center;
+    padding: 10px 16px;
+}
+
+.detalle-entradas-encabezado {
+    font-size: 14px;
+    color: #777;
+    border-bottom: 1.5px solid #2b2b2b;
+}
+
+.detalle-entradas-lista {
+    min-height: 92px;
+}
+
+.detalle-entrada-fila + .detalle-entrada-fila {
+    border-top: 1px solid #e3e3e3;
+}
+
+.detalle-col-tipo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.detalle-col-precio {
+    text-align: center;
+}
+
+.detalle-col-cantidad {
+    text-align: right;
+}
+
+/* Botones */
+.detalle-acciones {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 4px;
+}
+
+.detalle-boton {
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+
+    background-color: #fff;
+    border: none;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.detalle-boton-cancelar {
+    color: #e00000;
+}
+
+/* Celular */
+@media (max-width: 520px) {
+    .detalle-cuerpo {
+        padding: 16px;
+    }
+
+    .detalle-titulo {
+        font-size: 18px;
+    }
+
+    .detalle-entradas-encabezado,
+    .detalle-entrada-fila {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .detalle-boton {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}

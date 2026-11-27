@@ -2,7 +2,7 @@ import "./TarjetaEvento2.css";
 
 const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
-function TarjetaEvento2({ imagen, nombre, lugar, fecha, hora, agotado }) {
+function TarjetaEvento2({ imagen, nombre, lugar, fecha, hora, agotado, onClick }) {
     // fecha llega como "2000-01-30"
     const [anio, mesNumero, diaNumero] = fecha.slice(0, 10).split("-");
     const dia = Number(diaNumero);
@@ -16,7 +16,12 @@ function TarjetaEvento2({ imagen, nombre, lugar, fecha, hora, agotado }) {
     }
 
     return (
-        <article className="te2">
+        <article className="te2"
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter") onClick?.();}}
+        >
 
             <div className="te2-imagen">
                 <img src={imagen} alt={nombre} />
