@@ -7,8 +7,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+
 import { traerPublicaciones } from "../../services/publicaciones";
 import TarjetaPublicacion from "../../components/Clients/Tarjetas/TarjetaPublicacion";
+
 
 function CarruselPublicacion() {
     const [Publicaciones, setPublicaciones] = useState([]);

@@ -7,11 +7,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+
 import { traerEventos } from "../../services/eventos";
 import TarjetaEvento from "../../components/Clients/Tarjetas/TarjetaEvento";
+import Modal from "../../components/Modal";
+import DetalleEvento from "../../components/Clients/Tarjetas/DetalleEvento";
 
 function CarruselEventos() {
     const [eventos, setEventos] = useState([]);
+
+    const [eventoSeleccionado, setEventoSeleccionado] = useState(null);
+
 
     useEffect(() => {
         async function cargar() {
@@ -51,10 +57,32 @@ function CarruselEventos() {
                             imagen={evento.imagen}
                             lugar={evento.lugar}
                             fecha={evento.fecha}
+                            onClick={() => setEventoSeleccionado(evento)}
                         />
                     </SwiperSlide>
-                ))}
+
+                )
+
+                )
+
+                }
+
             </Swiper>
+
+            <Modal
+                abierto={eventoSeleccionado !== null}
+                onCerrar={() => setEventoSeleccionado(null)}
+            >
+
+                {eventoSeleccionado && (
+                    <DetalleEvento
+                        evento={eventoSeleccionado}
+                        onCerrar={() => setEventoSeleccionado(null)}
+                    />
+                )}
+            </Modal>
+
+
         </section>
     );
 }

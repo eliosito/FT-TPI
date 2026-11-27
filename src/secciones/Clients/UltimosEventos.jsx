@@ -2,10 +2,15 @@ import "./UltimosEventos.css";
 import TarjetaEvento from "../../components/Clients/Tarjetas/TarjetaEvento";
 import { useState, useEffect } from "react";
 import { traerEventos } from "../../services/eventos";
+import Modal from "../../components/Modal";
+import DetalleEvento from "../../components/Clients/Tarjetas/DetalleEvento";
+
 
 function UltimosEventos() {
     const [eventos, setEventos] = useState([]);
     const [error, setError] = useState(null);
+
+    const [eventoSeleccionado, setEventoSeleccionado] = useState(null);
     
     useEffect(() => {
         async function cargar() {
@@ -37,9 +42,24 @@ function UltimosEventos() {
                         imagen={evento.imagen}
                         lugar={evento.lugar}
                         fecha={evento.fecha}
+                        onClick={() => setEventoSeleccionado(evento)}
                     />
                 ))}
             </div>
+
+            <Modal
+                abierto={eventoSeleccionado !== null}
+                onCerrar={() => setEventoSeleccionado(null)}>
+
+
+                {eventoSeleccionado && (
+                    <DetalleEvento
+                    evento={eventoSeleccionado}
+                    onCerrar={() => setEventoSeleccionado(null)}
+                    />
+                )}
+
+                </Modal>
 
         </section>
     );

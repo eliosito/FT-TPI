@@ -1,9 +1,13 @@
 import "./TarjetaEvento.css";
 import React from 'react'
 
-export default function TarjetaEvento({ lugar, fecha, imagen }) {
+export default function TarjetaEvento({ lugar, fecha, imagen, onClick }) {
     return (
-        <article className="tarjeta-evento">
+        <article className="tarjeta-evento"
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        >
 
             <div className="tarjeta-imagen">
                 <img src={imagen} alt={`Evento en ${lugar}`} />

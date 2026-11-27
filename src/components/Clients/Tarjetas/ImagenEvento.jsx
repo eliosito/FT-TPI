@@ -2,9 +2,13 @@
 import "./ImagenEvento.css";
 import React from "react";
 
-export default function ImagenEvento({ imagen, lugar }) {
+export default function ImagenEvento({ imagen, lugar, onClick }) {
     return (
-        <article className="evento-card">
+        <article className="evento-card"
+        onClick={onClick}
+        role="button"
+        tabIndex={0}
+        >
             <div className="evento-card-imagen">
                 <img
                     src={imagen}
