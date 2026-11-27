@@ -80,9 +80,9 @@ function App() {
 
         <Route path="/publico/membresia">
           <RutaProtegida>
-            <PublicLayout>  
-          <Membresia/>
-          </PublicLayout>
+            <PublicLayout>
+              <Membresia />
+            </PublicLayout>
           </RutaProtegida>
         </Route>
 
@@ -99,7 +99,7 @@ function App() {
         <Route path="/privado/login">
           <RutaPublicaClub>
             <AuthLayout>
-              <LoginClub/>
+              <LoginClub />
             </AuthLayout>
           </RutaPublicaClub>
         </Route>
@@ -113,9 +113,11 @@ function App() {
         </Route>
 
         <Route path="/privado/organizacion/:id">
-          <PrivateLayout>
-            <PerfilOrganizacionClub />
-          </PrivateLayout>
+          <RutaProtegidaClub soloSocios>
+            <PrivateLayout>
+              <PerfilOrganizacionClub />
+            </PrivateLayout>
+          </RutaProtegidaClub>
         </Route>
 
 

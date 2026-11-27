@@ -1,0 +1,30 @@
+.Clubultimos-eventos {
+    background: #1a1d21;
+    border: 1px solid #2a2e33;
+    border-radius: 12px;
+    padding: 20px 24px;
+    max-width: 620px;
+}
+
+.Clubseccion-header {
+    margin-bottom: 16px;
+}
+
+.Clubseccion-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.Clubeventos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.Cluberror-mensaje {
+    margin: 0 0 12px;
+    color: #ff6b6b;
+    font-size: 0.9rem;
+}

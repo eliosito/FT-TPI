@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'wouter';
 import api from "../../../api.js";
+import ClubUltimosEventos from '../../../secciones/Organizadores/OrganizacionPage/ClubUltimosEventos.jsx';
 import "./OrganizacionPage.css";
 
 export default function PerfilOrganizacionClub() {
   const { id } = useParams();
+
   const [org, setOrg] = useState(null);
   const [error, setError] = useState(null);
 
@@ -13,20 +15,18 @@ export default function PerfilOrganizacionClub() {
     setError(null);
     setOrg(null);
 
-    async function getOrg() {
+    async function getOrgClub() {
       try {
         const respuesta = await api.get(`org/mias/${id}`);
         console.log("Pidio Organizacion CLUB", respuesta.data);
-        setOrg(respuesta.data[0]);
-        return true
+        setOrg(respuesta.data);
       } catch (err) {
-        console.error(error.response?.status, error.response?.data);
+        console.error(err.response?.status, err.response?.data);
         setError("No se encontró la organizacion")
-        return false;
       }
     }
 
-    getOrg()
+    getOrgClub()
   }, [id]);
 
   if (error) return <p>{error}</p>
@@ -36,7 +36,7 @@ export default function PerfilOrganizacionClub() {
   return (
     <main className="orgC-layout">
 
-      <UltimoEvento idOrg={id} />
+      <ClubUltimosEventos idOrg={id} />
 
 
     </main>

@@ -1,7 +1,8 @@
 /* ===== Tarjeta ===== */
 .tarjeta-org2 {
-  width: 100%;
-  max-width: 280px;
+  width: 300px;
+  height: 410Xpx;
+  flex-shrink: 0;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -31,6 +32,7 @@
 .tarjeta-portada2 {
   width: 100%;
   aspect-ratio: 1 / 1;
+  flex-shrink: 0;
   overflow: hidden;
   background: #1c1f24;
   border-radius: 12px;
@@ -51,6 +53,8 @@
   gap: 12px;
   padding: 0 4px 4px;
   text-align: left;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .tarjeta-nombre2,
@@ -74,4 +78,8 @@
   line-height: 1.25;
   color: #ffffff;
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
