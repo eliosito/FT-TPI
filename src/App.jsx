@@ -11,6 +11,7 @@ import PerfilOrganizacion from './pages/Clients/PerfilOrganizacion/PerfilOrganiz
 import { Redirect } from 'wouter';
 import PublicLayout from './layouts/PublicLayout';
 import PrivateLayout from './layouts/PrivateLayout';
+import PrivateOrgLayout from './layouts/PrivateOrgLayout';
 import NoEncontrada from './pages/Clients/NoEncontrada';
 import AuthLayout from './layouts/AuthLayout';
 import PerfilOrganizacionClub from './pages/Organizadores/OrganizacionPage/OrganizacionPage';
@@ -114,9 +115,9 @@ function App() {
 
         <Route path="/privado/organizacion/:id">
           <RutaProtegidaClub soloSocios>
-            <PrivateLayout>
+            <PrivateOrgLayout>
               <PerfilOrganizacionClub />
-            </PrivateLayout>
+            </PrivateOrgLayout>
           </RutaProtegidaClub>
         </Route>
 

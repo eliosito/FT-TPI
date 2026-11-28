@@ -1,0 +1,17 @@
+.orgLayout {
+  display: flex;
+  min-height: 100vh;
+  background: #101416;
+}
+
+.orgLayout-columna {
+  flex: 1;
+  min-width: 0;            /* evita que el contenido ancho desborde */
+  display: flex;
+  flex-direction: column;
+}
+
+.orgLayout-contenido {
+  flex: 1;
+  padding: 24px 32px;
+}
